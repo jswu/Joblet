@@ -1,0 +1,386 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0F5EA105131DB64900801CE8 /* UserJobDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EA104131DB64900801CE8 /* UserJobDatabase.m */; };
+		0F5EA1AC131DE36200801CE8 /* NSString+CommonOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EA1AB131DE36200801CE8 /* NSString+CommonOperations.m */; };
+		0F5EA43A131E2A8300801CE8 /* JobOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EA439131E2A8300801CE8 /* JobOverviewViewController.m */; };
+		0F7EB0F81319C71200E464CE /* JobItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7EB0F71319C71200E464CE /* JobItem.m */; };
+		0F8B8D4012E7F90A00297951 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8B8D3F12E7F90A00297951 /* CoreAudio.framework */; };
+		0F8B8D4212E7F91700297951 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8B8D4112E7F91700297951 /* SystemConfiguration.framework */; };
+		0F8B8D4412E7F92300297951 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8B8D4312E7F92300297951 /* MobileCoreServices.framework */; };
+		0F8B8D4612E7F94B00297951 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8B8D4512E7F94B00297951 /* libz.1.2.3.dylib */; };
+		0F8B8DA912E7FEA100297951 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8B8DA812E7FEA100297951 /* CFNetwork.framework */; };
+		0FD95B591323476E00A076B6 /* JobOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD95B581323476E00A076B6 /* JobOverviewViewController.xib */; };
+		0FEC4323134804BA0025E132 /* JobletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC4322134804BA0025E132 /* JobletViewController.m */; };
+		0FEC4326134804EB0025E132 /* JobletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEC4325134804EB0025E132 /* JobletViewController.xib */; };
+		0FEC433F1348083D0025E132 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC432A1348083D0025E132 /* ASIAuthenticationDialog.m */; };
+		0FEC43401348083D0025E132 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC432D1348083D0025E132 /* ASIDataCompressor.m */; };
+		0FEC43411348083D0025E132 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC432F1348083D0025E132 /* ASIDataDecompressor.m */; };
+		0FEC43421348083D0025E132 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC43311348083D0025E132 /* ASIDownloadCache.m */; };
+		0FEC43431348083D0025E132 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC43331348083D0025E132 /* ASIFormDataRequest.m */; };
+		0FEC43441348083D0025E132 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC43351348083D0025E132 /* ASIHTTPRequest.m */; };
+		0FEC43451348083D0025E132 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC43391348083D0025E132 /* ASIInputStream.m */; };
+		0FEC43461348083D0025E132 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC433B1348083D0025E132 /* ASINetworkQueue.m */; };
+		0FEC43471348083D0025E132 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC433E1348083D0025E132 /* Reachability.m */; };
+		0FEC43831348404B0025E132 /* HelperFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC43821348404B0025E132 /* HelperFunction.m */; };
+		1D3623260D0F684500981E51 /* JobletAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* JobletAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0F5EA103131DB64900801CE8 /* UserJobDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserJobDatabase.h; sourceTree = "<group>"; };
+		0F5EA104131DB64900801CE8 /* UserJobDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserJobDatabase.m; sourceTree = "<group>"; };
+		0F5EA1AA131DE36200801CE8 /* NSString+CommonOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CommonOperations.h"; sourceTree = "<group>"; };
+		0F5EA1AB131DE36200801CE8 /* NSString+CommonOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CommonOperations.m"; sourceTree = "<group>"; };
+		0F5EA438131E2A8300801CE8 /* JobOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobOverviewViewController.h; sourceTree = "<group>"; };
+		0F5EA439131E2A8300801CE8 /* JobOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobOverviewViewController.m; sourceTree = "<group>"; };
+		0F7EB0F61319C71200E464CE /* JobItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobItem.h; sourceTree = "<group>"; };
+		0F7EB0F71319C71200E464CE /* JobItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobItem.m; sourceTree = "<group>"; };
+		0F8B8D3F12E7F90A00297951 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		0F8B8D4112E7F91700297951 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0F8B8D4312E7F92300297951 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		0F8B8D4512E7F94B00297951 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		0F8B8DA812E7FEA100297951 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0FD95B581323476E00A076B6 /* JobOverviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = JobOverviewViewController.xib; path = Classes/JobOverviewViewController.xib; sourceTree = "<group>"; };
+		0FEC4322134804BA0025E132 /* JobletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobletViewController.m; sourceTree = "<group>"; };
+		0FEC4325134804EB0025E132 /* JobletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = JobletViewController.xib; path = Classes/JobletViewController.xib; sourceTree = "<group>"; };
+		0FEC43291348083D0025E132 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIAuthenticationDialog.h; path = ASIHTTPREQUEST/ASIAuthenticationDialog.h; sourceTree = "<group>"; };
+		0FEC432A1348083D0025E132 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIAuthenticationDialog.m; path = ASIHTTPREQUEST/ASIAuthenticationDialog.m; sourceTree = "<group>"; };
+		0FEC432B1348083D0025E132 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASICacheDelegate.h; path = ASIHTTPREQUEST/ASICacheDelegate.h; sourceTree = "<group>"; };
+		0FEC432C1348083D0025E132 /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIDataCompressor.h; path = ASIHTTPREQUEST/ASIDataCompressor.h; sourceTree = "<group>"; };
+		0FEC432D1348083D0025E132 /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIDataCompressor.m; path = ASIHTTPREQUEST/ASIDataCompressor.m; sourceTree = "<group>"; };
+		0FEC432E1348083D0025E132 /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIDataDecompressor.h; path = ASIHTTPREQUEST/ASIDataDecompressor.h; sourceTree = "<group>"; };
+		0FEC432F1348083D0025E132 /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIDataDecompressor.m; path = ASIHTTPREQUEST/ASIDataDecompressor.m; sourceTree = "<group>"; };
+		0FEC43301348083D0025E132 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIDownloadCache.h; path = ASIHTTPREQUEST/ASIDownloadCache.h; sourceTree = "<group>"; };
+		0FEC43311348083D0025E132 /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIDownloadCache.m; path = ASIHTTPREQUEST/ASIDownloadCache.m; sourceTree = "<group>"; };
+		0FEC43321348083D0025E132 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIFormDataRequest.h; path = ASIHTTPREQUEST/ASIFormDataRequest.h; sourceTree = "<group>"; };
+		0FEC43331348083D0025E132 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIFormDataRequest.m; path = ASIHTTPREQUEST/ASIFormDataRequest.m; sourceTree = "<group>"; };
+		0FEC43341348083D0025E132 /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIHTTPRequest.h; path = ASIHTTPREQUEST/ASIHTTPRequest.h; sourceTree = "<group>"; };
+		0FEC43351348083D0025E132 /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIHTTPRequest.m; path = ASIHTTPREQUEST/ASIHTTPRequest.m; sourceTree = "<group>"; };
+		0FEC43361348083D0025E132 /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIHTTPRequestConfig.h; path = ASIHTTPREQUEST/ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		0FEC43371348083D0025E132 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIHTTPRequestDelegate.h; path = ASIHTTPREQUEST/ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		0FEC43381348083D0025E132 /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIInputStream.h; path = ASIHTTPREQUEST/ASIInputStream.h; sourceTree = "<group>"; };
+		0FEC43391348083D0025E132 /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIInputStream.m; path = ASIHTTPREQUEST/ASIInputStream.m; sourceTree = "<group>"; };
+		0FEC433A1348083D0025E132 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASINetworkQueue.h; path = ASIHTTPREQUEST/ASINetworkQueue.h; sourceTree = "<group>"; };
+		0FEC433B1348083D0025E132 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASINetworkQueue.m; path = ASIHTTPREQUEST/ASINetworkQueue.m; sourceTree = "<group>"; };
+		0FEC433C1348083D0025E132 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIProgressDelegate.h; path = ASIHTTPREQUEST/ASIProgressDelegate.h; sourceTree = "<group>"; };
+		0FEC433D1348083D0025E132 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ASIHTTPREQUEST/Reachability.h; sourceTree = "<group>"; };
+		0FEC433E1348083D0025E132 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ASIHTTPREQUEST/Reachability.m; sourceTree = "<group>"; };
+		0FEC43811348404B0025E132 /* HelperFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperFunction.h; sourceTree = "<group>"; };
+		0FEC43821348404B0025E132 /* HelperFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelperFunction.m; sourceTree = "<group>"; };
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* JobletAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobletAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* JobletAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobletAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* Joblet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joblet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28D7ACF60DDB3853001CB0EB /* JobletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobletViewController.h; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* Joblet_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Joblet_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Joblet-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Joblet-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				0F8B8D4012E7F90A00297951 /* CoreAudio.framework in Frameworks */,
+				0F8B8D4212E7F91700297951 /* SystemConfiguration.framework in Frameworks */,
+				0F8B8D4412E7F92300297951 /* MobileCoreServices.framework in Frameworks */,
+				0F8B8D4612E7F94B00297951 /* libz.1.2.3.dylib in Frameworks */,
+				0F8B8DA912E7FEA100297951 /* CFNetwork.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1D3623240D0F684500981E51 /* JobletAppDelegate.h */,
+				1D3623250D0F684500981E51 /* JobletAppDelegate.m */,
+				28D7ACF60DDB3853001CB0EB /* JobletViewController.h */,
+				0FEC4322134804BA0025E132 /* JobletViewController.m */,
+				0F7EB0F61319C71200E464CE /* JobItem.h */,
+				0F7EB0F71319C71200E464CE /* JobItem.m */,
+				0F5EA103131DB64900801CE8 /* UserJobDatabase.h */,
+				0F5EA104131DB64900801CE8 /* UserJobDatabase.m */,
+				0F5EA1AA131DE36200801CE8 /* NSString+CommonOperations.h */,
+				0F5EA1AB131DE36200801CE8 /* NSString+CommonOperations.m */,
+				0F5EA438131E2A8300801CE8 /* JobOverviewViewController.h */,
+				0F5EA439131E2A8300801CE8 /* JobOverviewViewController.m */,
+				0FEC43811348404B0025E132 /* HelperFunction.h */,
+				0FEC43821348404B0025E132 /* HelperFunction.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		0F8B86AF12E3DF7B00297951 /* ASIHTTPRequest */ = {
+			isa = PBXGroup;
+			children = (
+				0FEC43291348083D0025E132 /* ASIAuthenticationDialog.h */,
+				0FEC432A1348083D0025E132 /* ASIAuthenticationDialog.m */,
+				0FEC432B1348083D0025E132 /* ASICacheDelegate.h */,
+				0FEC432C1348083D0025E132 /* ASIDataCompressor.h */,
+				0FEC432D1348083D0025E132 /* ASIDataCompressor.m */,
+				0FEC432E1348083D0025E132 /* ASIDataDecompressor.h */,
+				0FEC432F1348083D0025E132 /* ASIDataDecompressor.m */,
+				0FEC43301348083D0025E132 /* ASIDownloadCache.h */,
+				0FEC43311348083D0025E132 /* ASIDownloadCache.m */,
+				0FEC43321348083D0025E132 /* ASIFormDataRequest.h */,
+				0FEC43331348083D0025E132 /* ASIFormDataRequest.m */,
+				0FEC43341348083D0025E132 /* ASIHTTPRequest.h */,
+				0FEC43351348083D0025E132 /* ASIHTTPRequest.m */,
+				0FEC43361348083D0025E132 /* ASIHTTPRequestConfig.h */,
+				0FEC43371348083D0025E132 /* ASIHTTPRequestDelegate.h */,
+				0FEC43381348083D0025E132 /* ASIInputStream.h */,
+				0FEC43391348083D0025E132 /* ASIInputStream.m */,
+				0FEC433A1348083D0025E132 /* ASINetworkQueue.h */,
+				0FEC433B1348083D0025E132 /* ASINetworkQueue.m */,
+				0FEC433C1348083D0025E132 /* ASIProgressDelegate.h */,
+				0FEC433D1348083D0025E132 /* Reachability.h */,
+				0FEC433E1348083D0025E132 /* Reachability.m */,
+			);
+			name = ASIHTTPRequest;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* Joblet.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				0F8B86AF12E3DF7B00297951 /* ASIHTTPRequest */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				0F8B8D3F12E7F90A00297951 /* CoreAudio.framework */,
+				0F8B8D4112E7F91700297951 /* SystemConfiguration.framework */,
+				0F8B8D4312E7F92300297951 /* MobileCoreServices.framework */,
+				0F8B8D4512E7F94B00297951 /* libz.1.2.3.dylib */,
+				0F8B8DA812E7FEA100297951 /* CFNetwork.framework */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* Joblet_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0FD95B581323476E00A076B6 /* JobOverviewViewController.xib */,
+				0FEC4325134804EB0025E132 /* JobletViewController.xib */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* Joblet-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* Joblet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Joblet" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Joblet;
+			productName = Joblet;
+			productReference = 1D6058910D05DD3D006BFB54 /* Joblet.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Joblet" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* Joblet */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				0FD95B591323476E00A076B6 /* JobOverviewViewController.xib in Resources */,
+				0FEC4326134804EB0025E132 /* JobletViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* JobletAppDelegate.m in Sources */,
+				0F7EB0F81319C71200E464CE /* JobItem.m in Sources */,
+				0F5EA105131DB64900801CE8 /* UserJobDatabase.m in Sources */,
+				0F5EA1AC131DE36200801CE8 /* NSString+CommonOperations.m in Sources */,
+				0F5EA43A131E2A8300801CE8 /* JobOverviewViewController.m in Sources */,
+				0FEC4323134804BA0025E132 /* JobletViewController.m in Sources */,
+				0FEC433F1348083D0025E132 /* ASIAuthenticationDialog.m in Sources */,
+				0FEC43401348083D0025E132 /* ASIDataCompressor.m in Sources */,
+				0FEC43411348083D0025E132 /* ASIDataDecompressor.m in Sources */,
+				0FEC43421348083D0025E132 /* ASIDownloadCache.m in Sources */,
+				0FEC43431348083D0025E132 /* ASIFormDataRequest.m in Sources */,
+				0FEC43441348083D0025E132 /* ASIHTTPRequest.m in Sources */,
+				0FEC43451348083D0025E132 /* ASIInputStream.m in Sources */,
+				0FEC43461348083D0025E132 /* ASINetworkQueue.m in Sources */,
+				0FEC43471348083D0025E132 /* Reachability.m in Sources */,
+				0FEC43831348404B0025E132 /* HelperFunction.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Joblet_Prefix.pch;
+				INFOPLIST_FILE = "Joblet-Info.plist";
+				OTHER_LDFLAGS = "-lxml2";
+				PRODUCT_NAME = Joblet;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Joblet_Prefix.pch;
+				INFOPLIST_FILE = "Joblet-Info.plist";
+				PRODUCT_NAME = Joblet;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Joblet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Joblet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

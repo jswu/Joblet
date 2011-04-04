@@ -1,0 +1,13 @@
+//
+// Prefix header for all source files of the 'Joblet' target in the 'Joblet' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+	
+	#import "NSString+CommonOperations.h"
+	#import "HelperFunction.h"
+
+
+	#endif
