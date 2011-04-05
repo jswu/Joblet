@@ -78,6 +78,7 @@
 		0FEC433E1348083D0025E132 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ASIHTTPREQUEST/Reachability.m; sourceTree = "<group>"; };
 		0FEC43811348404B0025E132 /* HelperFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperFunction.h; sourceTree = "<group>"; };
 		0FEC43821348404B0025E132 /* HelperFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelperFunction.m; sourceTree = "<group>"; };
+		0FEC44C7134963D50025E132 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* JobletAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobletAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* JobletAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobletAppDelegate.m; sourceTree = "<group>"; };
@@ -127,6 +128,7 @@
 				0F5EA439131E2A8300801CE8 /* JobOverviewViewController.m */,
 				0FEC43811348404B0025E132 /* HelperFunction.h */,
 				0FEC43821348404B0025E132 /* HelperFunction.m */,
+				0FEC44C7134963D50025E132 /* Constants.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

@@ -182,7 +182,12 @@
 	// So get it working and re-factor later
 	BOOL validNode = YES;
 	JobItem *job = [[JobItem alloc] init];
-	
+	if ((node->children) && ((node->children)->content))
+		NSLog(@"children %@", [[NSString stringWithUTF8String:(const char*)(node->children->content)] stringAfterTrim]);
+	else {
+		NSLog(@"Is null");
+	}
+
 	// Get the job ID
 	if (NODE_IS_STILL_VALID)
 	{
@@ -397,44 +402,108 @@ static NSString *defaultIndent = nil;
 	}
 }
 
+- (void)parseLoginPage:(htmlNodePtr)node
+{
+	
+}
 
 #pragma mark --
 #pragma mark ASIHTTPRequest Delegate Methods
 
+/* Finished reuqest from initial login has the following possibilities:
+ *	-Sucessful login
+ *	-Invalid credentials
+ *	-Access denied (probably due to current time; JobMine is offline). Not sure if a user can be denied for other reason
+ *	-No internet connection (should fall into requestFailed:)
+ */
+
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-	// TODO: Tag requests to distinguish them here
 	NSLog(@"request Finished.");
+	// Prboably don't need to tag the requests, since only the login request will be asynchronous (so the loading spinner will spin).
 	// Just working on HTML parsing now, have to do all the erorr handling later
 	NSError *error = [self.formRequest error];
 	if (!error)
 	{
-		NSString *response = nil;
-		if ([self.formRequest responseString] != nil)
-			response = [[NSString alloc] initWithString:[self.formRequest responseString]];
-		else
+		NSString *response = [[self.formRequest responseString] copy];
+		if (response == nil)
 		{
 			// Page response was null, present error message to retry
-			response = [[NSString alloc] initWithString:@"JobLetViewController:\nrequestFinished: Blank page was returned"];
+			[HelperFunction showErrorAlertMsg:NSLocalizedString(@"An error was encounter when attempting to access JobMine. Please check your connection and try again.", @"A blank page was returned. Report error and prompt user to try again")];
+			self.loginButton.enabled = YES;
 			return;
 		}
+		//				NSLog(@"The response data is:\n%@", response);
 		
-		if (response != nil)
-			// TODO: parse the page to see whether the login was successful or not
-			//NSLog(@"The response data is:\n%@", response);
-			NSLog(@"Non-empty page retrieved");
+		xmlChar *loginHTML = xmlCharStrdup([response UTF8String]);
+		htmlDocPtr loginHTMLDoc = htmlParseDoc(loginHTML, NULL);
+		
+		if (loginHTMLDoc != NULL)
+		{
+			htmlNodePtr loginRootNode = xmlDocGetRootElement(loginHTMLDoc);
+			if (loginRootNode != NULL)
+			{
+				[self parseLoginPage:loginRootNode];
+			}
+			else
+			{
+				[HelperFunction showErrorAlertMsg:[NSString stringWithFormat:kString_GenericErrorMessage, kErrorCode_NullLoginHTMLNode]];
+			}
+			
+		}
 		else
 		{
-			NSLog(@"JobLetViewController:\nrequestFinished: The response was nil.");
-			return;
+			[HelperFunction showErrorAlertMsg:[NSString stringWithFormat:kString_GenericErrorMessage, kErrorCode_NullLoginHTMLDoc]];
 		}
 		
 		[response release];
+		/*
+		 
+		 
+		 // Sample to copy from
+		 xmlChar *applicationSectionHTML = xmlCharStrdup([applicationPage UTF8String]);
+		 htmlDocPtr applicationHTMLDoc = htmlParseDoc(applicationSectionHTML, NULL);
+		 
+		 if (applicationHTMLDoc != NULL)
+		 {
+		 htmlNodePtr applicationRoot = xmlDocGetRootElement(applicationHTMLDoc);
+		 if (applicationRoot != NULL)
+		 {
+		 NSLog(@"Traversing parse tree");
+		 [self parseNode:applicationRoot withIndent:[NSString stringWithString:@""]];
+		 }
+		 xmlFreeDoc(applicationHTMLDoc);
+		 applicationHTMLDoc = NULL;
+		 }
+		 
+		 
+		 if ([self.formRequest responseString] != nil)
+		 response = [[NSString alloc] initWithString:[self.formRequest responseString]];
+		 else
+		 {
+		 // Page response was null, present error message to retry
+		 [HelperFunction showErrorAlertMsg:NSLocalizedString(@"An error was encounter when attempting to access JobMine. Please check your connection and try again.", @"A blank page was returned. Report error and prompt user to try again")];
+		 return;
+		 }
+		 
+		 if (response != nil)
+		 {
+		 // TODO: parse the page to see whether the login was successful or not
+		 NSLog(@"The response data is:\n%@", response);
+		 NSLog(@"Non-empty page retrieved");
+		 }
+		 else
+		 {
+		 NSLog(@"JobLetViewController:\nrequestFinished: The response was nil.");
+		 return;
+		 }
+		 */
 	}
 	else
 	{
-		NSLog(@"JobLetViewController:\nrequestFinished: Error.");
+		NSLog(@"JobLetViewController:\nrequestFinished: Error on login.");
 		// Error handling
+		[HelperFunction showErrorAlertMsg:[NSString stringWithFormat:kString_GenericErrorMessage, kErrorCode_BlankLoginResponse]];
 		return;
 	}
 	
@@ -446,7 +515,7 @@ static NSString *defaultIndent = nil;
 		[HelperFunction showAlertMsg:NSLocalizedString(@"You do not have any active applied jobs.", @"When trying to login with no jobs in the job Application page") 
 						   withTitle:NSLocalizedString(@"Information", @"Alert heading for general informative alerts")];
 		self.loginButton.enabled = YES;
-
+		
 	}
 	else
 	{

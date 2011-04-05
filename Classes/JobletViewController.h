@@ -10,6 +10,12 @@
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 
+#define kTag_LoginRequest	0
+
+#define kErrorCode_BlankLoginResponse	@"100"
+#define	kErrorCode_NullLoginHTMLDoc		@"101"
+#define	kErrorCode_NullLoginHTMLNode	@"102"
+ 
 @interface JobletViewController : UIViewController<ASIHTTPRequestDelegate> {
 	IBOutlet UITextField *userID;
 	IBOutlet UITextField *password;
