@@ -1,0 +1,5 @@
+# Temporary file
+*~
+*.swp
+
+build/**/*

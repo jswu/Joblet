@@ -457,47 +457,6 @@ static NSString *defaultIndent = nil;
 		}
 		
 		[response release];
-		/*
-		 
-		 
-		 // Sample to copy from
-		 xmlChar *applicationSectionHTML = xmlCharStrdup([applicationPage UTF8String]);
-		 htmlDocPtr applicationHTMLDoc = htmlParseDoc(applicationSectionHTML, NULL);
-		 
-		 if (applicationHTMLDoc != NULL)
-		 {
-		 htmlNodePtr applicationRoot = xmlDocGetRootElement(applicationHTMLDoc);
-		 if (applicationRoot != NULL)
-		 {
-		 NSLog(@"Traversing parse tree");
-		 [self parseNode:applicationRoot withIndent:[NSString stringWithString:@""]];
-		 }
-		 xmlFreeDoc(applicationHTMLDoc);
-		 applicationHTMLDoc = NULL;
-		 }
-		 
-		 
-		 if ([self.formRequest responseString] != nil)
-		 response = [[NSString alloc] initWithString:[self.formRequest responseString]];
-		 else
-		 {
-		 // Page response was null, present error message to retry
-		 [HelperFunction showErrorAlertMsg:NSLocalizedString(@"An error was encounter when attempting to access JobMine. Please check your connection and try again.", @"A blank page was returned. Report error and prompt user to try again")];
-		 return;
-		 }
-		 
-		 if (response != nil)
-		 {
-		 // TODO: parse the page to see whether the login was successful or not
-		 NSLog(@"The response data is:\n%@", response);
-		 NSLog(@"Non-empty page retrieved");
-		 }
-		 else
-		 {
-		 NSLog(@"JobLetViewController:\nrequestFinished: The response was nil.");
-		 return;
-		 }
-		 */
 	}
 	else
 	{
