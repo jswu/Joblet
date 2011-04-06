@@ -29,6 +29,7 @@
 		0FEC43461348083D0025E132 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC433B1348083D0025E132 /* ASINetworkQueue.m */; };
 		0FEC43471348083D0025E132 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC433E1348083D0025E132 /* Reachability.m */; };
 		0FEC43831348404B0025E132 /* HelperFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC43821348404B0025E132 /* HelperFunction.m */; };
+		0FF4C9C6134C075A005CD179 /* SWWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FF4C9C5134C075A005CD179 /* SWWebViewController.m */; };
 		1D3623260D0F684500981E51 /* JobletAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* JobletAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -79,6 +80,8 @@
 		0FEC43811348404B0025E132 /* HelperFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperFunction.h; sourceTree = "<group>"; };
 		0FEC43821348404B0025E132 /* HelperFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelperFunction.m; sourceTree = "<group>"; };
 		0FEC44C7134963D50025E132 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		0FF4C9C4134C075A005CD179 /* SWWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWWebViewController.h; sourceTree = "<group>"; };
+		0FF4C9C5134C075A005CD179 /* SWWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWWebViewController.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* JobletAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobletAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* JobletAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobletAppDelegate.m; sourceTree = "<group>"; };
@@ -114,6 +117,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0FF4C9BF134C06A3005CD179 /* Generic SW Classes */,
 				1D3623240D0F684500981E51 /* JobletAppDelegate.h */,
 				1D3623250D0F684500981E51 /* JobletAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* JobletViewController.h */,
@@ -160,6 +164,15 @@
 				0FEC433E1348083D0025E132 /* Reachability.m */,
 			);
 			name = ASIHTTPRequest;
+			sourceTree = "<group>";
+		};
+		0FF4C9BF134C06A3005CD179 /* Generic SW Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0FF4C9C4134C075A005CD179 /* SWWebViewController.h */,
+				0FF4C9C5134C075A005CD179 /* SWWebViewController.m */,
+			);
+			name = "Generic SW Classes";
 			sourceTree = "<group>";
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
@@ -297,6 +310,7 @@
 				0FEC43461348083D0025E132 /* ASINetworkQueue.m in Sources */,
 				0FEC43471348083D0025E132 /* Reachability.m in Sources */,
 				0FEC43831348404B0025E132 /* HelperFunction.m in Sources */,
+				0FF4C9C6134C075A005CD179 /* SWWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
