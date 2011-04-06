@@ -197,8 +197,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	// Go to the following link with the JOB ID appended to the end
-	// https://jobmine.ccol.uwaterloo.ca/servlets/iclientservlet/SS/?Menu=UW_CO_STUDENTS&Component=UW_CO_JOBDTLS&Market=GBL&Page=UW_CO_STU_JOBDTLS&Action=U&target=Transfer20&UW_CO_JOB_ID=
 	JobItem *job = [UserJobDatabase getJobItemForJobID:[[self cachedRowData] objectAtIndex:indexPath.row]];
 	 
 	NSString *jobID = job.jobIDString;
@@ -216,7 +214,7 @@
 	// TODO: Check if session with JobMine is still valid, error out if necessary
 	
 	// Push UIWebView onto the navigation stak and show the page.
-	NSString *URLStr = [[NSString alloc] initWithFormat:@"https://jobmine.ccol.uwaterloo.ca/servlets/iclientservlet/SS/?Menu=UW_CO_STUDENTS&Component=UW_CO_JOBDTLS&Market=GBL&Page=UW_CO_STU_JOBDTLS&Action=U&target=Transfer20&UW_CO_JOB_ID=%@", jobID];
+	NSString *URLStr = [[NSString alloc] initWithFormat:kJobMineURL_JobDetailsPageBaseURL, jobID];
 	
 	SWWebViewController *jobDetailsViewController = [[SWWebViewController alloc] initWithStringURL:URLStr andDelegate:self];
 	

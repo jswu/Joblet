@@ -58,7 +58,7 @@
 //	NSLog(@"Username: %@", userID.text);
 //	NSLog(@"Password: %@", password.text);
 
-	NSString *stringForURL = [[NSString alloc] initWithFormat:@"https://jobmine.ccol.uwaterloo.ca/servlets/iclientservlet/ES/?cmd=login&languageCd=ENG&sessionId="];
+	NSString *stringForURL = [[NSString alloc] initWithFormat:kJobMineURL_LoginForm];
 
 	NSURL *URL = [[NSURL alloc] initWithString:stringForURL];	
 	[stringForURL release];
@@ -67,16 +67,13 @@
 	[URL release];
 	
 	/*
-	 https://jobmine.ccol.uwaterloo.ca/servlets/iclientservlet/ES/?cmd=login&languageCd=ENG&sessionId=
+	 Check Constants.h for kJobMineURL_LoginForm
 	 Jobmine form fields
 	 Replace credentials with your own.
 	 timezoneOffset:300
 	 userid:USERNAME
 	 pwd:PASSWORD
 	 submit:Submit
-	 
-	 Alternatively save the pages of interest and store them on your own server to test the html parsing.
-	 
 	 */
 	
 	[formRequest setPostValue:[NSNumber numberWithInteger:300] forKey:@"timezoneOffset"];
@@ -86,8 +83,6 @@
 	
 	[ID release];
 	[PW release];
-	// Add request headers here
-	
 	// Bring up loading screen
 	
 	self.formRequest.delegate = self;
@@ -128,6 +123,14 @@
 	
 	self.userMessages.textAlignment = UITextAlignmentCenter;
 	self.userMessages.numberOfLines = 0;
+}	
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	// Clear the user name since the user successfully logged in
+	userID.text = @"";
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -136,7 +139,7 @@
 	
 	// We disabled the button upon login
 	self.loginButton.enabled = YES;
-}	
+}
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -374,7 +377,7 @@ static NSString *defaultIndent = nil;
 	defaultIndent = [[NSString alloc] initWithString:@" "];
 	NSLog(@"Began fetching application page");
 		
- 	NSString *stringForURL = [[NSString alloc] initWithFormat:@"https://jobmine.ccol.uwaterloo.ca/servlets/iclientservlet/ES/?ICType=Panel&Menu=UW_CO_STUDENTS&Market=GBL&PanelGroupName=UW_CO_APP_SUMMARY&RL=&target=main0&navc=4844"];
+ 	NSString *stringForURL = [[NSString alloc] initWithFormat:kJobMineURL_ApplicationPage];
 	
 	NSURL *URL = [[NSURL alloc] initWithString:stringForURL];	
 	[stringForURL release];
@@ -419,7 +422,9 @@ static NSString *defaultIndent = nil;
  *	-Access denied (probably due to current time; JobMine is offline). Not sure if a user can be denied for other reason
  *	-No internet connection (should fall into requestFailed:)
  */
-
+// Another case to consider is when the session expires.
+// Though it will not happen here, since requestFinished: will only be called when establishing new sessions.
+// This is just a reminder to take care of that case as well.
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
 	NSLog(@"request Finished.");
@@ -469,11 +474,14 @@ static NSString *defaultIndent = nil;
 		return;
 	}
 	
-	NSLog(@"Now fetching interviews page");
+	NSLog(@"Now fetching application page");
 	[self fetchApplicationPage];
 	
+	// TODO: We may want to enable other features even though they have no job items in the applcation page.
+	// Though those cases will need to be considered when we support more than just the Application page.
 	if ([[UserJobDatabase getJobIDList] count] == 0)
 	{
+		// The user has no jobs on their account displayed through the applications page. Any uncaught errors would probably also end up here.
 		[HelperFunction showAlertMsg:NSLocalizedString(@"You do not have any active applied jobs.", @"When trying to login with no jobs in the job Application page") 
 						   withTitle:NSLocalizedString(@"Information", @"Alert heading for general informative alerts")];
 		self.loginButton.enabled = YES;
@@ -486,10 +494,7 @@ static NSString *defaultIndent = nil;
 		[self.navigationController pushViewController:nextView animated:YES];
 		[nextView release];
 		
-		// Clear the user name since the user successfully logged in
-		userID.text = @"";
-		
-		// Fetch the other pages in the background
+		// Fetch the other pages in the background, or synchronously...depending on the final design
 	}
 }
 
