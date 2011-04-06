@@ -193,6 +193,9 @@
 	{
 		NSString *content = [[NSString stringWithUTF8String:(const char*)(node->children->content)] stringAfterTrim];
 		
+		// Get the string version to generate the job details link
+		job.jobIDString = content;
+		
 		NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
 		[formatter setNumberStyle:NSNumberFormatterDecimalStyle];
 		

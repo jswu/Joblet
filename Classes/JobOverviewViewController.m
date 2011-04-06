@@ -199,9 +199,9 @@
 {
 	// Go to the following link with the JOB ID appended to the end
 	// https://jobmine.ccol.uwaterloo.ca/servlets/iclientservlet/SS/?Menu=UW_CO_STUDENTS&Component=UW_CO_JOBDTLS&Market=GBL&Page=UW_CO_STU_JOBDTLS&Action=U&target=Transfer20&UW_CO_JOB_ID=
-	JobItem *job = [UserJobDatabase getJobItemForJobID:[[self cachedRowData] objectAtIndex:index.row]];
+	JobItem *job = [UserJobDatabase getJobItemForJobID:[[self cachedRowData] objectAtIndex:indexPath.row]];
 	 
-	NSString *jobID = job.jobID;
+	NSString *jobID = job.jobIDString;
 	if ([jobID isEqualToString:@""])  // No ID found during scrapping
 	{
 		// This should be very unlikely, if at all possible since every job should have a job ID (at least from what I've seen).
@@ -216,7 +216,7 @@
 	// TODO: Check if session with JobMine is still valid, error out if necessary
 	
 	// Push UIWebView onto the navigation stak and show the page.
-	NSString *URLStr = [[NSString alloc] initWithString:@"https://jobmine.ccol.uwaterloo.ca/servlets/iclientservlet/SS/?Menu=UW_CO_STUDENTS&Component=UW_CO_JOBDTLS&Market=GBL&Page=UW_CO_STU_JOBDTLS&Action=U&target=Transfer20&UW_CO_JOB_ID=%@", jobID];
+	NSString *URLStr = [[NSString alloc] initWithFormat:@"https://jobmine.ccol.uwaterloo.ca/servlets/iclientservlet/SS/?Menu=UW_CO_STUDENTS&Component=UW_CO_JOBDTLS&Market=GBL&Page=UW_CO_STU_JOBDTLS&Action=U&target=Transfer20&UW_CO_JOB_ID=%@", jobID];
 	
 	UIWebView *jobDetailsView = [[UIWebView alloc] init];
 	NSURL *finalURL = [[NSURL alloc] initWithString:URLStr];

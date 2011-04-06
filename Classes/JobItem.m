@@ -11,7 +11,7 @@
 
 @implementation JobItem
 
-@synthesize jobID, jobTitle, employer, unit, term, termCode, jobStatus, jobStatusCode, appStatus, appStatusCode, lastDayToApply, lastDayToApplyDate, numberOfApps;
+@synthesize jobIDString, jobID, jobTitle, employer, unit, term, termCode, jobStatus, jobStatusCode, appStatus, appStatusCode, lastDayToApply, lastDayToApplyDate, numberOfApps;
 @synthesize interviewers, interviewRoom;
 @synthesize rankByUser, rankByEmployer;
 
@@ -19,7 +19,9 @@
 {
 	if (self = [super init])
 	{
+		jobIDString = nil;
 		jobID = nil;
+		
 		jobTitle = nil;
 		employer = nil;
 		unit = nil;
@@ -50,7 +52,9 @@
 
 - (void)dealloc
 {
+	[jobIDString release], jobIDString = nil;
 	[jobID release], jobID = nil;
+	
 	[jobTitle release], jobTitle = nil;
 	[employer release], employer = nil;
 	[unit release], unit = nil;
@@ -80,8 +84,8 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"<%@ %p>{jobID: %@, jobTitle: %@, employer: %@, unit :%@, term: %@, termCode: %@, jobStatus: %@, jobStatusCode: %@, appStatus: %@, appStatusCode: %@, lastDayToApply: %@, lastDayToApplyDate: %@, numberOfApps: %@, interviewers: %@, interviewRoom: %@, rankByUser: %@, rankByEmployer: %@}",
-			[self class], self, jobID, jobTitle, employer, unit, term, termCode, jobStatus, jobStatusCode, appStatus, appStatusCode, lastDayToApply, lastDayToApplyDate, 
+	return [NSString stringWithFormat:@"<%@ %p>{jobIDString: %@, jobID: %@, jobTitle: %@, employer: %@, unit :%@, term: %@, termCode: %@, jobStatus: %@, jobStatusCode: %@, appStatus: %@, appStatusCode: %@, lastDayToApply: %@, lastDayToApplyDate: %@, numberOfApps: %@, interviewers: %@, interviewRoom: %@, rankByUser: %@, rankByEmployer: %@}",
+			[self class], self, jobIDString, jobID, jobTitle, employer, unit, term, termCode, jobStatus, jobStatusCode, appStatus, appStatusCode, lastDayToApply, lastDayToApplyDate, 
 			numberOfApps, interviewers, interviewRoom, rankByUser, rankByEmployer];
 }
 
