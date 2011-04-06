@@ -30,7 +30,7 @@
 
 @interface JobItem : NSObject {
 	// Applications page
-	NSNumber	*jobIDString;
+	NSString	*jobIDString;
 	NSNumber	*jobID;
 	
 	NSString	*jobTitle;
@@ -61,7 +61,7 @@
 	
 }
 // Applcations page
-@property (nonatomic, copy) NSNumber	*jobIDString;
+@property (nonatomic, copy) NSString	*jobIDString;
 @property (nonatomic, retain) NSNumber	*jobID;
 
 @property (nonatomic, copy) NSString	*jobTitle;

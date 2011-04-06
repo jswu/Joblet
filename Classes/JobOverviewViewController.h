@@ -7,9 +7,12 @@
 //	
 
 #import <UIKit/UIKit.h>
+#import "SWWebViewController.h"
 
 
-@interface JobOverviewViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate> {
+@interface JobOverviewViewController : UIViewController 
+<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, 
+SWWebViewControllerDelegate> {
 	NSArray					*cachedRowData;
 	NSMutableArray			*newCachedRowData;
 	IBOutlet UITableView	*jobTableView;

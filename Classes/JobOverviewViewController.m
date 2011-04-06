@@ -218,16 +218,18 @@
 	// Push UIWebView onto the navigation stak and show the page.
 	NSString *URLStr = [[NSString alloc] initWithFormat:@"https://jobmine.ccol.uwaterloo.ca/servlets/iclientservlet/SS/?Menu=UW_CO_STUDENTS&Component=UW_CO_JOBDTLS&Market=GBL&Page=UW_CO_STU_JOBDTLS&Action=U&target=Transfer20&UW_CO_JOB_ID=%@", jobID];
 	
-	UIWebView *jobDetailsView = [[UIWebView alloc] init];
-	NSURL *finalURL = [[NSURL alloc] initWithString:URLStr];
-	NSURLRequest *jobDetailsRequest = [[NSURLRequest alloc] initWithURL:finalURL];
-	[jobDetailsView loadRequest:jobDetailsRequest];
-	[self.navigationController pushViewController:jobDetailsView animated:YES];
+	SWWebViewController *jobDetailsViewController = [[SWWebViewController alloc] initWithStringURL:URLStr andDelegate:self];
 	
-	[URLStr release];
-	[finalURL release];
-	[jobDetailsRequest release];
-	[jobDetailsView release];
+//	UIWebView *jobDetailsView = [[UIWebView alloc] init];
+//	NSURL *finalURL = [[NSURL alloc] initWithString:URLStr];
+//	NSURLRequest *jobDetailsRequest = [[NSURLRequest alloc] initWithURL:finalURL];
+//	[jobDetailsView loadRequest:jobDetailsRequest];
+	[self.navigationController pushViewController:jobDetailsViewController animated:YES];
+	
+//	[URLStr release];
+//	[finalURL release];
+//	[jobDetailsRequest release];
+//	[jobDetailsView release];
 } 
 
 #pragma mark -
