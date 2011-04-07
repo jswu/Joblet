@@ -16,6 +16,8 @@ SWWebViewControllerDelegate> {
 	NSArray					*cachedRowData;
 	NSMutableArray			*newCachedRowData;
 	IBOutlet UITableView	*jobTableView;
+	
+	NSIndexPath				*_lastSelectedRowIndexPath;
 }
 
 @property (retain) NSArray							*cachedRowData;

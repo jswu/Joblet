@@ -65,6 +65,16 @@
 	self.cachedRowData = (NSArray *)[UserJobDatabase getJobIDList];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	
+	if (_lastSelectedRowIndexPath != nil)
+	{
+		[self.jobTableView deselectRowAtIndexPath:_lastSelectedRowIndexPath animated:animated];
+		[_lastSelectedRowIndexPath release], _lastSelectedRowIndexPath = nil;
+	}
+}
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -224,6 +234,7 @@
 //	[jobDetailsView loadRequest:jobDetailsRequest];
 	[self.navigationController pushViewController:jobDetailsViewController animated:YES];
 	
+	_lastSelectedRowIndexPath = [indexPath copy];
 //	[URLStr release];
 //	[finalURL release];
 //	[jobDetailsRequest release];
