@@ -45,7 +45,7 @@
 	self.webView = [[UIWebView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	[self.webView release];
 	self.webView.delegate = self;
-//	self.webView.scalesPageToFit = YES;
+	self.webView.scalesPageToFit = YES;
 	[self.view addSubview:self.webView];
 	
 	NSURLRequest *tempRequest = [[NSURLRequest alloc] initWithURL:self.targetURL];
@@ -60,6 +60,12 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+	// TODO: This doens't quite work...There is just a black blob, need to fix this.
+	self.webView.frame = [[UIScreen mainScreen] bounds];
 }
 
 - (void)didReceiveMemoryWarning {
