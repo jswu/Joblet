@@ -9,6 +9,7 @@
 #import "JobletViewController.h"
 #import "UserJobDatabase.h"
 #import "JobOverviewViewController.h"
+#import "SWLoadingView.h"
 // HTML parsing
 #import <libxml/xmlmemory.h>
 #import <libxml/HTMLparser.h>
@@ -50,13 +51,10 @@
 		self.userMessages.text = NSLocalizedString(@"Please enter your password.", @"Warning message when user leaves password field blank");
 		return;
 	}
-	
-	self.loginButton.enabled = NO; // This will not be needed after a loading view is added
+
+	[SWLoadingView show];
 	self.userMessages.text = @"";
 	self.password.text = @"";
-
-//	NSLog(@"Username: %@", userID.text);
-//	NSLog(@"Password: %@", password.text);
 
 	NSString *stringForURL = [[NSString alloc] initWithFormat:kJobMineURL_LoginForm];
 
@@ -90,7 +88,6 @@
 	NSLog(@"New debugging");
 	
 	[self.formRequest startAsynchronous];
-	// TODO: loading spinner
 }
 
 - (IBAction)backgroundTapped:(id)sender
@@ -136,9 +133,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	
-	// We disabled the button upon login
-	self.loginButton.enabled = YES;
 }
 
 /*
@@ -438,7 +432,7 @@ static NSString *defaultIndent = nil;
 		{
 			// Page response was null, present error message to retry
 			[HelperFunction showErrorAlertMsg:NSLocalizedString(@"An error was encounter when attempting to access JobMine. Please check your connection and try again.", @"A blank page was returned. Report error and prompt user to try again")];
-			self.loginButton.enabled = YES;
+			[SWLoadingView hide];
 			return;
 		}
 		//				NSLog(@"The response data is:\n%@", response);
@@ -456,12 +450,14 @@ static NSString *defaultIndent = nil;
 			else
 			{
 				[HelperFunction showErrorAlertMsg:[NSString stringWithFormat:kString_GenericErrorMessage, kErrorCode_NullLoginHTMLNode]];
+				[SWLoadingView hide];
 			}
 			
 		}
 		else
 		{
 			[HelperFunction showErrorAlertMsg:[NSString stringWithFormat:kString_GenericErrorMessage, kErrorCode_NullLoginHTMLDoc]];
+			[SWLoadingView hide];
 		}
 		
 		[response release];
@@ -471,6 +467,7 @@ static NSString *defaultIndent = nil;
 		NSLog(@"JobLetViewController:\nrequestFinished: Error on login.");
 		// Error handling
 		[HelperFunction showErrorAlertMsg:[NSString stringWithFormat:kString_GenericErrorMessage, kErrorCode_BlankLoginResponse]];
+		[SWLoadingView hide];
 		return;
 	}
 	
@@ -484,11 +481,11 @@ static NSString *defaultIndent = nil;
 		// The user has no jobs on their account displayed through the applications page. Any uncaught errors would probably also end up here.
 		[HelperFunction showAlertMsg:NSLocalizedString(@"You do not have any active applied jobs.", @"When trying to login with no jobs in the job Application page") 
 						   withTitle:NSLocalizedString(@"Information", @"Alert heading for general informative alerts")];
-		self.loginButton.enabled = YES;
-		
+		[SWLoadingView hide];
 	}
 	else
 	{
+		[SWLoadingView hide];
 		// load the table view here
 		JobOverviewViewController *nextView = [[JobOverviewViewController alloc] init];
 		[self.navigationController pushViewController:nextView animated:YES];
@@ -502,7 +499,7 @@ static NSString *defaultIndent = nil;
 {
 	NSLog(@"request Failed.");
 	[HelperFunction showAlertCheckConnection];
-	self.loginButton.enabled = YES;
+	[SWLoadingView hide];
 
 }
 
