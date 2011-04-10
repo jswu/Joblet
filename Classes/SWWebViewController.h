@@ -28,5 +28,6 @@
 - (id)initWithStringURL:(NSString *)urlString andDelegate:(id<SWWebViewControllerDelegate>)assignDelegate;
 - (id)initWithURL:(NSURL *)url andDelegate:(id<SWWebViewControllerDelegate>)assignDelegate;
 - (void)makeRequest;
+- (void)adjustWebViewFrameToOrientation:(UIInterfaceOrientation)curInterfaceOrientation;
 
 @end

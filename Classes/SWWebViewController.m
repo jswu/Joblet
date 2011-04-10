@@ -33,7 +33,7 @@
 		self.targetURL = url;
 		self.delegate = assignDelegate;
 		
-		self.webView = [[UIWebView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+		self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
 		[self.webView release];
 		self.webView.delegate = self;
 		self.webView.scalesPageToFit = YES;
@@ -49,11 +49,21 @@
 	[tempRequest release];
 }
 
+- (void)adjustWebViewFrameToOrientation:(UIInterfaceOrientation)curInterfaceOrientation
+{
+	// Assumes a status bar and a navigation bar.
+	// TODO: Should probably detect what shown, or find a way to fill the full view.
+	if (UIInterfaceOrientationIsLandscape(curInterfaceOrientation))
+		self.webView.frame = CGRectMake(0, 0, 480, 256);
+	else
+		self.webView.frame = CGRectMake(0, 0, 320, 416);
+}
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	
-	self.webView.frame = [[UIScreen mainScreen] bounds];
+ 
+	[self adjustWebViewFrameToOrientation:self.interfaceOrientation];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -65,10 +75,9 @@
 	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-	// TODO: This doens't quite work...There is just a black blob, need to fix this.
-	self.webView.frame = [[UIScreen mainScreen] bounds];
+	[self adjustWebViewFrameToOrientation:toInterfaceOrientation];
 }
 
 - (void)didReceiveMemoryWarning {
