@@ -9,20 +9,24 @@
 #import <UIKit/UIKit.h>
 #import "SWWebViewController.h"
 
+@class SWWebViewController;
 
 @interface JobOverviewViewController : UIViewController 
 <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, 
 SWWebViewControllerDelegate> {
+	NSIndexPath				*_lastSelectedRowIndexPath;
+	
 	NSArray					*cachedRowData;
 	NSMutableArray			*newCachedRowData;
 	IBOutlet UITableView	*jobTableView;
 	
-	NSIndexPath				*_lastSelectedRowIndexPath;
+	SWWebViewController		*jobDetailsViewController;
 }
 
 @property (retain) NSArray							*cachedRowData;
 @property (retain) NSMutableArray					*newCachedRowData;
 @property (nonatomic, retain) IBOutlet UITableView	*jobTableView;
+@property (nonatomic, retain) SWWebViewController	*jobDetailsViewController;
 
 - (void)updateTable;
 

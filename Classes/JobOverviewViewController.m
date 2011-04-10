@@ -8,12 +8,14 @@
 
 #import "JobOverviewViewController.h"
 #import "UserJobDatabase.h"
+#import "SWLoadingView.h"
 
 
 @implementation JobOverviewViewController
 
 @synthesize cachedRowData, newCachedRowData;
 @synthesize jobTableView;
+@synthesize jobDetailsViewController;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -104,7 +106,10 @@
 	[newCachedRowData release], newCachedRowData = nil;
 	
 	[jobTableView release], jobTableView = nil;
-    [super dealloc];
+
+	[jobDetailsViewController release], jobDetailsViewController = nil;
+    
+	[super dealloc];
 }
 
 #pragma mark -
@@ -223,26 +228,43 @@
 	
 	// TODO: Check if session with JobMine is still valid, error out if necessary
 	
-	// Push UIWebView onto the navigation stak and show the page.
-	NSString *URLStr = [[NSString alloc] initWithFormat:kJobMineURL_JobDetailsPageBaseURL, jobID];
+	[SWLoadingView show];
 	
-	SWWebViewController *jobDetailsViewController = [[SWWebViewController alloc] initWithStringURL:URLStr andDelegate:self];
-	
-//	UIWebView *jobDetailsView = [[UIWebView alloc] init];
-//	NSURL *finalURL = [[NSURL alloc] initWithString:URLStr];
-//	NSURLRequest *jobDetailsRequest = [[NSURLRequest alloc] initWithURL:finalURL];
-//	[jobDetailsView loadRequest:jobDetailsRequest];
-	[self.navigationController pushViewController:jobDetailsViewController animated:YES];
-	
+	// Remember which row was click to fade later.
 	_lastSelectedRowIndexPath = [indexPath copy];
-//	[URLStr release];
-//	[finalURL release];
-//	[jobDetailsRequest release];
-//	[jobDetailsView release];
-} 
+	
+	NSString *URLStr = [[NSString alloc] initWithFormat:kJobMineURL_JobDetailsPageBaseURL, jobID];
+	// TODO: Should look into caching the pages so the usr doesn't have to fetch them twice.
+	// But not sure if the staff at JobMine would approve of that (maybe it counts as storing JobMine infromation).
+	// If we do end up caching the, we should reuse the jobDetailsViewController.
+	self.jobDetailsViewController = [[SWWebViewController alloc] initWithStringURL:URLStr andDelegate:self];
+	[URLStr release];
+	// Property is set to retain and we alloc'd, release one.
+	[self.jobDetailsViewController release];
+	[self.jobDetailsViewController makeRequest];
+}
 
 #pragma mark -
 #pragma mark UIAlertView Delegate Methods
 
+#pragma mark -
+#pragma mark SWWebViewController Delegate Methods
+- (void)requestDidFailLoadForWebView:(UIWebView *)myWebView withError:(NSError *)error
+{
+	[SWLoadingView hide];
+	_lastSelectedRowIndexPath = nil;
+	
+	[HelperFunction showAlertCheckConnection];
+	self.jobDetailsViewController = nil;
+}
+
+- (void)requestDidFinishLoadForWebView:(UIWebView *)myWebView
+{
+	[SWLoadingView hide];
+	
+	[self.navigationController pushViewController:jobDetailsViewController animated:YES];	
+	self.jobDetailsViewController = nil;
+	
+}
 
 @end

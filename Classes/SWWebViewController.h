@@ -10,6 +10,7 @@
 
 @optional
 - (void)requestDidFailLoadForWebView:(UIWebView *)myWebView withError:(NSError *)error;
+- (void)requestDidFinishLoadForWebView:(UIWebView *)myWebView;
 
 @end
 
@@ -26,5 +27,6 @@
 
 - (id)initWithStringURL:(NSString *)urlString andDelegate:(id<SWWebViewControllerDelegate>)assignDelegate;
 - (id)initWithURL:(NSURL *)url andDelegate:(id<SWWebViewControllerDelegate>)assignDelegate;
+- (void)makeRequest;
 
 @end

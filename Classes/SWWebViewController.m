@@ -17,13 +17,11 @@
 
 - (id)initWithStringURL:(NSString *)urlString andDelegate:(id<SWWebViewControllerDelegate>)assignDelegate
 {
-	
 	if (self = [super init])
 	{
 		NSURL *tempURL = [[NSURL alloc] initWithString:urlString];
-		self.targetURL = tempURL;
+		self = [self initWithURL:tempURL andDelegate:assignDelegate];
 		[tempURL release];
-		self.delegate = assignDelegate;
 	}
 	return self;
 }
@@ -34,23 +32,28 @@
 	{
 		self.targetURL = url;
 		self.delegate = assignDelegate;
+		
+		self.webView = [[UIWebView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+		[self.webView release];
+		self.webView.delegate = self;
+		self.webView.scalesPageToFit = YES;
+		[self.view addSubview:self.webView];
 	}
 	return self;
+}
+
+- (void)makeRequest
+{
+	NSURLRequest *tempRequest = [[NSURLRequest alloc] initWithURL:self.targetURL];
+	[self.webView loadRequest:tempRequest];
+	[tempRequest release];
 }
 
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
 	
-	self.webView = [[UIWebView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	[self.webView release];
-	self.webView.delegate = self;
-	self.webView.scalesPageToFit = YES;
-	[self.view addSubview:self.webView];
-	
-	NSURLRequest *tempRequest = [[NSURLRequest alloc] initWithURL:self.targetURL];
-	[self.webView loadRequest:tempRequest];
-	[tempRequest release];
+	self.webView.frame = [[UIScreen mainScreen] bounds];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -105,6 +108,8 @@
 - (void)webViewDidFinishLoad:(UIWebView *)myWebView
 {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+	if ([delegate respondsToSelector:@selector(requestDidFinishLoadForWebView:)])
+		[delegate requestDidFinishLoadForWebView:myWebView];
 }
 
 - (void)dealloc {
