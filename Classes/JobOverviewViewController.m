@@ -9,6 +9,7 @@
 #import "JobOverviewViewController.h"
 #import "UserJobDatabase.h"
 #import "SWLoadingView.h"
+#import "OptionsViewController.h"
 
 
 @implementation JobOverviewViewController
@@ -46,9 +47,9 @@
 	[jobTableView setDataSource:self];
 	[self.view addSubview:jobTableView];
 	
-	self.navigationItem.title = NSLocalizedString(@"Job Information", @"Job list view heading");
+	self.navigationItem.title = kString_JobInformation;
 	
-	UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Logout", @"Job list view left bar item") 
+	UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:kString_Logout
 																	 style:UIBarButtonItemStyleBordered 
 																	target:self 
 																	action:@selector(logoutButtonPressed)];
@@ -56,7 +57,7 @@
 	[logoutButton release];
 	
 	
-	UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Options", @"Job list view right bar item")
+	UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithTitle:kString_Options
 																	  style:UIBarButtonItemStyleBordered 
 																	 target:self 
 																	 action:@selector(optionsButtonPressed)];
@@ -65,6 +66,14 @@
 	
 	
 	self.cachedRowData = (NSArray *)[UserJobDatabase getJobIDList];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:kKeyOptions_OptionsDidChange])
+		[[self jobTableView] reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -131,40 +140,94 @@
 
 - (void)optionsButtonPressed
 {
+	OptionsViewController *vc = [[OptionsViewController alloc] init];
+	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+	[self.navigationController presentModalViewController:nav animated:YES];
+	[nav release];
+	[vc release];
 }
 
 #pragma mark -
 #pragma mark UITableViewDataSource Delegate Methods
-/*
-- (NSInteger)(	numberOfSectionsInTableView:(UITableView *)tableView
-{
-	NSLog(@"cp1");
-	return 1;
-}
-
-- (NSInteger)numberOfRowsInSection:(UITableView *)tableView
-{
-	NSLog(@"cp2");
-	return [[self cachedRowData] count] + 1;
-}
- */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	NSLog(@"cp4");
 	return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	NSLog(@"cp5");
 	NSLog(@"There are %d rows", [[self cachedRowData] count] + 1);
 	return [[self cachedRowData] count];
 }
 
+- (NSString *)infoStringForJobItem:(JobItem *)job
+{
+	NSString *infoText = @"";
+	
+	// Use a loop here so that we can easily allow the user to change the order of the listed job field (to be implemented at a later time)
+	for (int i=0;i<kNumberOfShowInfoOptions;i++)
+	{
+		// Only show fields enabled ny the user
+		if ([[NSUserDefaults standardUserDefaults] boolForKey:[NSString stringWithFormat:@"%@_%d", kKeyOptions_ShowInfo, i]])
+		{
+			NSString *tempInfo;
+			switch (i) {
+				case kOptionsViewTableCellRowIndex_ShowJobTitle:
+					tempInfo = job.jobTitle;
+					break;
+				case kOptionsViewTableCellRowIndex_ShowEmployer:
+					tempInfo = job.employer;
+					break;
+				case kOptionsViewTableCellRowIndex_ShowUnit:
+					tempInfo = job.unit;
+					break;
+				case kOptionsViewTableCellRowIndex_ShowNumberOfApps:
+					tempInfo = [job.numberOfApps stringValue];
+					break;
+				case kOptionsViewTableCellRowIndex_ShowJobStatus:
+					tempInfo = job.jobStatus;
+					break;
+				case kOptionsViewTableCellRowIndex_ShowTerm:
+					tempInfo = job.term;
+					break;
+				case kOptionsViewTableCellRowIndex_ShowLastDayToApply:
+					tempInfo = job.lastDayToApply;
+					break;
+				case kOptionsViewTableCellRowIndex_ShowJobID:
+					tempInfo = job.jobIDString;
+					break;
+				case kOptionsViewTableCellRowIndex_ShowInterviewers:
+					tempInfo = job.interviewers;
+					break;
+				case kOptionsViewTableCellRowIndex_ShowInterviewRoom:
+					tempInfo = job.interviewRoom;
+					break;
+				case kOptionsViewTableCellRowIndex_ShowRankByUser:
+					tempInfo = [job.rankByUser stringValue];
+					break;
+				case kOptionsViewTableCellRowIndex_ShowRankByEmployer:
+					tempInfo = [job.rankByEmployer stringValue];
+					break;
+			}
+			
+			if (tempInfo == nil || [tempInfo isEqualToString:@""]) // Shouldn't be nil, but check just to be safe
+				tempInfo = kString_NA;
+			
+			infoText = [infoText stringByAppendingFormat:@"%@\n", tempInfo];
+		}
+	}
+	
+	infoText = [infoText stringAfterTrim];
+	
+	// Force employer and job title if nothign is enabled. Temporary, should decide later if this is the best options.
+	if ([infoText isEqualToString:@""])
+		infoText = [NSString stringWithFormat:@"%@\n%@", job.employer, job.jobTitle];
+	
+	return infoText;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSLog(@"cp3");
 	NSInteger row = indexPath.row;
 	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JobInfoCell"];
@@ -182,13 +245,10 @@
 	if (![job.appStatus isEqualToString:@""])
 		cell.textLabel.text = [NSString stringWithString:job.appStatus];
 	else
-		cell.textLabel.text = [NSString stringWithString:NSLocalizedString(@"N/A", @"No data is available for a field of job item")]; // @"" String makes the label collapse
+		cell.textLabel.text = [NSString stringWithString:kString_NA]; // @"" String makes the label collapse
 	cell.textLabel.textAlignment = UITextAlignmentCenter;
 	
-	// Application status
-	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\n%@", job.employer, job.jobTitle];
-	//cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@", job.employer, job.jobTitle, job.jobStatus, job.lastDayToApply, job.numberOfApps];
-	
+	cell.detailTextLabel.text = [self infoStringForJobItem:job];
 	
 	return cell;
 	
@@ -200,9 +260,10 @@
 {
 	NSInteger row = indexPath.row;
 	JobItem *job = [UserJobDatabase getJobItemForJobID:[[self cachedRowData] objectAtIndex:row]];
-	
-	NSString *cellText = [NSString stringWithFormat:@"%@\n%@", job.employer, job.jobTitle];
-//	NSString *cellText = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@", job.employer, job.jobTitle, job.jobStatus, job.lastDayToApply, job.numberOfApps];
+
+	// TODO: Need to cache the info string so we don't need to compute it twice.
+	// Low priority, since performance isn't a big issue right now anyway (the app does so little).
+	NSString *cellText = [self infoStringForJobItem:job];
 	UIFont *cellFont = [UIFont systemFontOfSize:12]; 
 	CGSize constraintSize = CGSizeMake(200.0f, MAXFLOAT);
     CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];

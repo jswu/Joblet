@@ -197,7 +197,52 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>0FEADF321352ADC4000DF17D</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>JobOverviewViewController.m</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>0FEADF361352AFA3000DF17D</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>JobOverviewViewController.m</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>0FEADFD91352D797000DF17D</string>
+						<key>history</key>
+						<array>
+							<string>0FEADF671352B8BB000DF17D</string>
+							<string>0FEADFC91352D671000DF17D</string>
+							<string>0FEADFCE1352D734000DF17D</string>
+							<string>0FEADFD81352D797000DF17D</string>
+							<string>0FEADFC41352D64B000DF17D</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {1390, 730}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>15 107 1390 771 0 0 1440 878 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>1440</integer>
@@ -274,19 +319,18 @@
 								<string>0FEADDAE1350ED1E000DF17D</string>
 								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
+								<string>1C77FABC04509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>28</integer>
-									<integer>26</integer>
-									<integer>25</integer>
+									<integer>44</integer>
 									<integer>24</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {283, 704}}</string>
+							<string>{{0, 633}, {283, 704}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -314,14 +358,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>0F9F9FD712DBFB8E006B31A5</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Constants.h</string>
+								<string>JobOverviewViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -329,17 +371,16 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>0F9F9FD812DBFB8E006B31A5</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Constants.h</string>
+										<string>JobOverviewViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>0FEADE3813511ABD000DF17D</string>
+										<string>0FEADFD71352D797000DF17D</string>
 										<key>history</key>
 										<array>
 											<string>0F7EB134131B6E8F00E464CE</string>
 											<string>0FEC4389134849D60025E132</string>
 											<string>0FEC4436134947370025E132</string>
-											<string>0FEC445D134953190025E132</string>
 											<string>0FEC4460134953190025E132</string>
 											<string>0FEC4461134953190025E132</string>
 											<string>0FEC4462134953190025E132</string>
@@ -348,17 +389,25 @@
 											<string>0FEC44DD13497C510025E132</string>
 											<string>0F477BF6134A9C060036F23F</string>
 											<string>0FF4C9E1134C2ACC005CD179</string>
-											<string>0FF4C9E3134C2ACC005CD179</string>
-											<string>0FF4C9E5134C2ACC005CD179</string>
-											<string>0FF4C9E6134C2ACC005CD179</string>
-											<string>0FEADA98134D6FF6000DF17D</string>
-											<string>0FEADAAB134D73C8000DF17D</string>
-											<string>0FEADDEB13511373000DF17D</string>
-											<string>0FEADDEC13511373000DF17D</string>
 											<string>0FEADE2E13511A4E000DF17D</string>
 											<string>0FEADE3313511A9E000DF17D</string>
 											<string>0FEADE3613511ABD000DF17D</string>
-											<string>0FEADE3713511ABD000DF17D</string>
+											<string>0FEADE4A135133FF000DF17D</string>
+											<string>0FEADE88135138F7000DF17D</string>
+											<string>0FEADEF5135252C2000DF17D</string>
+											<string>0FEADEF7135252C2000DF17D</string>
+											<string>0FEADEF9135252C2000DF17D</string>
+											<string>0FEADF0A13527862000DF17D</string>
+											<string>0FEADF0B13527862000DF17D</string>
+											<string>0FEADF0C13527862000DF17D</string>
+											<string>0FEADF0E13527862000DF17D</string>
+											<string>0FEADF0F13527862000DF17D</string>
+											<string>0FEADF1013527862000DF17D</string>
+											<string>0FEADF5C1352B6B8000DF17D</string>
+											<string>0FEADFB11352D2E5000DF17D</string>
+											<string>0FEADFD41352D797000DF17D</string>
+											<string>0FEADFD51352D797000DF17D</string>
+											<string>0FEADFD61352D797000DF17D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -453,7 +502,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1135, 221}}</string>
+										<string>{{10, 27}, {1135, -27}}</string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -652,7 +701,7 @@
 	<key>PerspectivesBarVisible</key>
 	<true/>
 	<key>PinnedNavigatorIdentifier</key>
-	<string>0FEADDE21351134E000DF17D</string>
+	<string>0FEADF321352ADC4000DF17D</string>
 	<key>ShelfIsVisible</key>
 	<false/>
 	<key>SourceDescription</key>
@@ -677,6 +726,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>0FEADE7D1351376C000DF17D</string>
+		<string>0FEADE7E1351376C000DF17D</string>
+		<string>0FEADF321352ADC4000DF17D</string>
 		<string>/Users/sandywu/code/Xcode/Jobmine App/Joblet/Joblet.xcodeproj</string>
 	</array>
 	<key>WindowString</key>

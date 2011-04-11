@@ -10,6 +10,7 @@
 #import "UserJobDatabase.h"
 #import "JobOverviewViewController.h"
 #import "SWLoadingView.h"
+#import "OptionsViewController.h"
 // HTML parsing
 #import <libxml/xmlmemory.h>
 #import <libxml/HTMLparser.h>
@@ -114,12 +115,28 @@
 }
 */
 
+- (void)optionsButtonPressed
+{
+	OptionsViewController *vc = [[OptionsViewController alloc] init];
+	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+	[self.navigationController presentModalViewController:nav animated:YES];
+	[nav release];
+	[vc release];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.navigationItem.title = NSLocalizedString(@"Login", @"Login view header");
 	
 	self.userMessages.textAlignment = UITextAlignmentCenter;
 	self.userMessages.numberOfLines = 0;
+	
+	UIBarButtonItem *optionsButton = [[UIBarButtonItem alloc] initWithTitle:kString_Options
+																	  style:UIBarButtonItemStyleBordered 
+																	 target:self 
+																	 action:@selector(optionsButtonPressed)];
+	self.navigationItem.rightBarButtonItem = optionsButton;	
+	[optionsButton release];
 }	
 
 - (void)viewWillAppear:(BOOL)animated

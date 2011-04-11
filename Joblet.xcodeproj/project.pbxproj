@@ -19,6 +19,8 @@
 		0FD95B591323476E00A076B6 /* JobOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD95B581323476E00A076B6 /* JobOverviewViewController.xib */; };
 		0FEADDB31350ED52000DF17D /* SWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEADDB11350ED52000DF17D /* SWLoadingView.m */; };
 		0FEADDB41350ED52000DF17D /* SWLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEADDB21350ED52000DF17D /* SWLoadingView.xib */; };
+		0FEADF0313525F19000DF17D /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEADF0113525F19000DF17D /* OptionsViewController.m */; };
+		0FEADF0413525F19000DF17D /* OptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEADF0213525F19000DF17D /* OptionsViewController.xib */; };
 		0FEC4323134804BA0025E132 /* JobletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC4322134804BA0025E132 /* JobletViewController.m */; };
 		0FEC4326134804EB0025E132 /* JobletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEC4325134804EB0025E132 /* JobletViewController.xib */; };
 		0FEC433F1348083D0025E132 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC432A1348083D0025E132 /* ASIAuthenticationDialog.m */; };
@@ -58,6 +60,9 @@
 		0FEADDB01350ED52000DF17D /* SWLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWLoadingView.h; sourceTree = "<group>"; };
 		0FEADDB11350ED52000DF17D /* SWLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWLoadingView.m; sourceTree = "<group>"; };
 		0FEADDB21350ED52000DF17D /* SWLoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SWLoadingView.xib; sourceTree = "<group>"; };
+		0FEADF0013525F19000DF17D /* OptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsViewController.h; sourceTree = "<group>"; };
+		0FEADF0113525F19000DF17D /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
+		0FEADF0213525F19000DF17D /* OptionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionsViewController.xib; sourceTree = "<group>"; };
 		0FEC4322134804BA0025E132 /* JobletViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobletViewController.m; sourceTree = "<group>"; };
 		0FEC4325134804EB0025E132 /* JobletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = JobletViewController.xib; path = Classes/JobletViewController.xib; sourceTree = "<group>"; };
 		0FEC43291348083D0025E132 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIAuthenticationDialog.h; path = ASIHTTPREQUEST/ASIAuthenticationDialog.h; sourceTree = "<group>"; };
@@ -138,6 +143,9 @@
 				0FEC43811348404B0025E132 /* HelperFunction.h */,
 				0FEC43821348404B0025E132 /* HelperFunction.m */,
 				0FEC44C7134963D50025E132 /* Constants.h */,
+				0FEADF0013525F19000DF17D /* OptionsViewController.h */,
+				0FEADF0113525F19000DF17D /* OptionsViewController.m */,
+				0FEADF0213525F19000DF17D /* OptionsViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -308,6 +316,7 @@
 				0FD95B591323476E00A076B6 /* JobOverviewViewController.xib in Resources */,
 				0FEC4326134804EB0025E132 /* JobletViewController.xib in Resources */,
 				0FEADDB41350ED52000DF17D /* SWLoadingView.xib in Resources */,
+				0FEADF0413525F19000DF17D /* OptionsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +346,7 @@
 				0FEC43831348404B0025E132 /* HelperFunction.m in Sources */,
 				0FF4C9C6134C075A005CD179 /* SWWebViewController.m in Sources */,
 				0FEADDB31350ED52000DF17D /* SWLoadingView.m in Sources */,
+				0FEADF0313525F19000DF17D /* OptionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
