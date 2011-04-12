@@ -21,6 +21,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	[UserJobDatabase initDatabase];
 	
+	// Configure default user-defaults on first app launch.
+	if (![[NSUserDefaults standardUserDefaults] boolForKey:kKeyDefaultOptionsSetForRelease1])
+	{
+		// Turn on job title and employer by default
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:[NSString stringWithFormat:@"%@_%d", kKeyOptions_ShowInfo, kOptionsViewTableCellRowIndex_ShowJobTitle]];
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:[NSString stringWithFormat:@"%@_%d", kKeyOptions_ShowInfo, kOptionsViewTableCellRowIndex_ShowEmployer]];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+	}
+	
 	// Present the login screen
 	JobletViewController *rootController = [[JobletViewController alloc] init];
     navigationController = [[UINavigationController alloc]
