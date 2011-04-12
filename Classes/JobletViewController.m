@@ -139,17 +139,13 @@
 	[optionsButton release];
 }	
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidDisappear:(BOOL)animated
 {
-	[super viewWillAppear:animated];
+	[super viewDidDisappear:animated];
 	
-	// Clear the user name since the user successfully logged in
-	userID.text = @"";
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-	[super viewDidAppear:animated];
+	// Clear the user name if the user successfully logged in
+	if ([[self.navigationController visibleViewController] isKindOfClass:[JobOverviewViewController class]])
+		userID.text = @"";
 }
 
 /*
