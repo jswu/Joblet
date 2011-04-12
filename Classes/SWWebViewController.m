@@ -98,7 +98,16 @@
 
 - (BOOL)webView:(UIWebView *)myWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-	return YES;
+	BOOL retVal;
+	// Only allow loading of the original request. Ie. do not allow user to navigate to other URLs using the web view.
+	if ([[request URL] isEqual:self.targetURL])
+		retVal = YES;
+	else
+		retVal = NO;
+	// TODO: More testing needed.
+	// Upon initially testing this seemed to work fine. However, it did fail once with a retVal of 0 and a check connection alert popup was received.
+	// Maybe the connection was flaky, should test this prt ore thoroughly later.
+	return retVal;
 }
 
 - (void)webView:(UIWebView *)myWebView didFailLoadWithError:(NSError *)error
