@@ -417,6 +417,7 @@ static NSString *defaultIndent = nil;
 		xmlFreeDoc(applicationHTMLDoc);
 		applicationHTMLDoc = NULL;
 	}
+	xmlFreeDoc(applicationHTMLDoc);	
 }
 
 - (void)parseLoginPage:(htmlNodePtr)node
@@ -476,7 +477,7 @@ static NSString *defaultIndent = nil;
 			[HelperFunction showErrorAlertMsg:[NSString stringWithFormat:kString_GenericErrorMessage, kErrorCode_NullLoginHTMLDoc]];
 			[SWLoadingView hide];
 		}
-		
+		xmlFreeDoc(loginHTMLDoc);
 		[response release];
 	}
 	else
