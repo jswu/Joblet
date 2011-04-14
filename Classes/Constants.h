@@ -33,6 +33,11 @@
 #define kString_OptionsCellRankByUser				NSLocalizedString(@"Rank By User", @"Options cell text for rank by user");
 #define kString_OptionsCellRankByEmployer			NSLocalizedString(@"Rank By Employer", @"Options cell text for rank by employer");
 
+// HelperFunction strings
+#define kString_Error								NSLocalizedString(@"Error", "Error alert heading")
+#define kString_CheckInternetConnection				NSLocalizedString(@"Could not connection to JobMine. Please make sure that you are connected to the internet and try again.", @"No internet connection error message")
+#define kString_OK									NSLocalizedString(@"OK", "Button option")
+
 #pragma mark -
 #pragma mark JobMine URLS
 

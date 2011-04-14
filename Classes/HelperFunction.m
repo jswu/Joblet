@@ -13,12 +13,12 @@
 
 + (void)showErrorAlertMsg:(NSString *)msg
 {
-	[HelperFunction showAlertMsg:msg withTitle:NSLocalizedString(@"Error", "Error alert heading")];
+	[HelperFunction showAlertMsg:msg withTitle:kString_Error];
 }
 
 + (void)showAlertCheckConnection
 {
-	[HelperFunction showAlertMsg:NSLocalizedString(@"Please check that you are connected to the internet and try again.", @"No internet connection error message") withTitle:NSLocalizedString(@"Error", "Error alert heading")];
+	[HelperFunction showAlertMsg:kString_CheckInternetConnection withTitle:kString_Error];
 }
 
 + (void)showAlertMsg:(NSString *)msg withTitle:(NSString *)title
@@ -36,7 +36,7 @@
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title 
 													message:msg 
 												   delegate:nil
-										  cancelButtonTitle:NSLocalizedString(@"OK", "Alert button option") 
+										  cancelButtonTitle:kString_OK 
 										  otherButtonTitles:nil];
 	[alert show];
 	[alert release];
