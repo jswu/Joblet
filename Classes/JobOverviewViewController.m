@@ -235,6 +235,7 @@
 	if (cell == nil)
 	{
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"JobInfoCell"] autorelease];
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		cell.detailTextLabel.numberOfLines = 0;
 		cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
 	}
@@ -313,7 +314,8 @@
 - (void)requestDidFailLoadForWebView:(UIWebView *)myWebView withError:(NSError *)error
 {
 	[SWLoadingView hide];
-	_lastSelectedRowIndexPath = nil;
+	[self.jobTableView deselectRowAtIndexPath:_lastSelectedRowIndexPath animated:YES];
+	[_lastSelectedRowIndexPath release], _lastSelectedRowIndexPath = nil;
 	
 	[HelperFunction showAlertCheckConnection];
 	self.jobDetailsViewController = nil;
