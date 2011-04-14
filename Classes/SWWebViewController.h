@@ -19,11 +19,14 @@
 	id<SWWebViewControllerDelegate> delegate;
 	UIWebView *webView;
 	NSURL *targetURL;
+	
+	BOOL allowRequest;
 }
 
 @property (nonatomic, assign) id<SWWebViewControllerDelegate> delegate;
 @property (nonatomic, retain) UIWebView *webView;
 @property (nonatomic, retain) NSURL *targetURL;
+@property (nonatomic, assign) BOOL allowRequest;
 
 - (id)initWithStringURL:(NSString *)urlString andDelegate:(id<SWWebViewControllerDelegate>)assignDelegate;
 - (id)initWithURL:(NSURL *)url andDelegate:(id<SWWebViewControllerDelegate>)assignDelegate;
