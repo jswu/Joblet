@@ -302,8 +302,8 @@
 		NSString *content = [[NSString stringWithUTF8String:(const char*)(node->children->content)] stringAfterTrim];
 		
 		job.appStatus = content;
-		
-		// TODO: code for extracting appStatusCode
+		[job configureAppStatusCodeAndColour];
+
 		ADVANCE_TO_NEXT_NODE(node);
 		// Next field is either a "View Details" or "Edit Application" link, which is useless to us, for now...
 		ADVANCE_TO_NEXT_NODE(node);

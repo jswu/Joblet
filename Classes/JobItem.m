@@ -95,5 +95,33 @@
 	return [self.jobID isEqualToNumber:other.jobID];
 }
 
+- (void)configureAppStatusCodeAndColour
+{
+	int code;
+	// TODO: Add a colour field for each job item depending on the application status
+	// In the options they can make this apply only to the appStatus text or the whole bcakground. Or none at all (maybe?)
+//	UIColor *colour;
+	
+	if ([appStatus isEqualToString:@"Employed"])
+		code = kAppStatusCode_Employed;
+	else if ([appStatus isEqualToString:@"Offer"])
+		code = kAppStatusCode_Offer;
+	else if ([appStatus isEqualToString:@"Ranked"])
+		code = kAppStatusCode_Ranked;
+	else if ([appStatus isEqualToString:@"Not Ranked"])
+		code = kAppStatusCode_NotRanked;
+	else if ([appStatus isEqualToString:@"Alternate"])
+		code = kAppStatusCode_Alternate;
+	else if ([appStatus isEqualToString:@"Pending"])
+		code = kAppStatusCode_Pending;
+	else if ([appStatus isEqualToString:@"Applied"])
+		code = kAppStatusCode_Applied;
+	else if ([appStatus isEqualToString:@"Not Selected"])
+		code = kAppStatusCode_NotSelected;
+	else // This includes blank application statuses
+		code = kAppStatusCode_Unknown;
+	
+	[self setAppStatusCode:[NSNumber numberWithInt:code]];
+}
 @end
 	

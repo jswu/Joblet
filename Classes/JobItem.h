@@ -15,12 +15,15 @@
 #define kJobStatus_Filled		1
 #define kJobStatus_Cancelled	2
 
-#define kAppStatus_Applied		0
-#define kAppStatus_NotSelected	1
-#define kAppStatus_Pending		2
-#define kAppStatus_NotRanked	3
-#define kAppStatus_Alternate	4
-#define kAppStatus_Employed		5
+#define kAppStatusCode_Employed		0
+#define kAppStatusCode_Offer		1 // Not sure if this is valid, but just incase...
+#define kAppStatusCode_Ranked		2 // Not sure if this is valid, but just incase...
+#define kAppStatusCode_NotRanked	3
+#define kAppStatusCode_Alternate	4
+#define kAppStatusCode_Pending		5
+#define kAppStatusCode_Applied		6
+#define kAppStatusCode_NotSelected	7
+#define kAppStatusCode_Unknown		9 // For any state that I missed and blank app statuses
 
 // Usnure of existance
 #define kAppStatus_NotApplied	6
@@ -89,5 +92,7 @@
 // Rankings page
 @property (nonatomic, copy) NSNumber	*rankByUser;
 @property (nonatomic, copy) NSNumber	*rankByEmployer;
+
+- (void)configureAppStatusCodeAndColour;
 
 @end
