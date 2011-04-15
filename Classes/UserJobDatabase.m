@@ -64,4 +64,18 @@ static NSMutableDictionary *jobItemLookup = nil;
 	return [jobItemLookup objectForKey:key];
 }
 
++ (NSMutableArray *)getJobItemArray
+{
+	NSMutableArray *retArray = [[[NSMutableArray alloc] initWithCapacity:[jobItemLookup count]] autorelease];
+	// We don't directly store our data in arrays because we may later want to implement a refresh feature.
+	// Using a dictionary will allow us to easily locate the item we are updating.
+	
+	for (JobItem *item in [jobItemLookup allValues])
+	{
+		[retArray addObject:item];
+	}
+	
+	return retArray;
+}
+
 @end

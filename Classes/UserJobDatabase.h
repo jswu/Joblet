@@ -20,5 +20,6 @@
 // Job Item management
 + (void)addJobItem:(JobItem *)item;
 + (JobItem *)getJobItemForJobID:(NSNumber *)key;
++ (NSMutableArray *)getJobItemArray;
 
 @end

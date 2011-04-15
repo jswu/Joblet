@@ -10,6 +10,7 @@
 #import "SWWebViewController.h"
 
 @class SWWebViewController;
+@class JobItem;
 
 @interface JobOverviewViewController : UIViewController 
 <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, 
@@ -17,18 +18,19 @@ SWWebViewControllerDelegate> {
 	NSIndexPath				*_lastSelectedRowIndexPath;
 	
 	NSArray					*cachedRowData;
-	NSMutableArray			*newCachedRowData;
+	NSArray					*cachedRowInfoStrings;
 	IBOutlet UITableView	*jobTableView;
 	
 	SWWebViewController		*jobDetailsViewController;
 }
 
-@property (retain) NSArray							*cachedRowData;
-@property (retain) NSMutableArray					*newCachedRowData;
+@property (nonatomic, retain) NSArray				*cachedRowData;
+@property (nonatomic, retain) NSArray				*cachedRowInfoStrings;
 @property (nonatomic, retain) IBOutlet UITableView	*jobTableView;
 @property (nonatomic, retain) SWWebViewController	*jobDetailsViewController;
 
-- (void)updateTable;
+- (void)rebuildJobTableCacheWithNewSortedOrder:(BOOL)shouldSort;
+- (NSString *)infoStringForJobItem:(JobItem *)job;
 
 - (void)logoutButtonPressed;
 - (void)optionsButtonPressed;

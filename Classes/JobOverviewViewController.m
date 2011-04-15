@@ -14,7 +14,7 @@
 
 @implementation JobOverviewViewController
 
-@synthesize cachedRowData, newCachedRowData;
+@synthesize cachedRowData, cachedRowInfoStrings;
 @synthesize jobTableView;
 @synthesize jobDetailsViewController;
 
@@ -64,16 +64,27 @@
 	self.navigationItem.rightBarButtonItem = optionsButton;	
 	[optionsButton release];
 	
-	
-	self.cachedRowData = (NSArray *)[UserJobDatabase getJobIDList];
+	if (self.cachedRowData || self.cachedRowInfoStrings == nil)
+	{
+		[self rebuildJobTableCacheWithNewSortedOrder:YES];
+	}
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
 	
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:kKeyOptions_OptionsDidChange])
+	BOOL infoStringsOptionChanged = [[NSUserDefaults standardUserDefaults] boolForKey:kKeyOptions_OptionsDidChange];
+	BOOL sortingCriteriaChanged = [[NSUserDefaults standardUserDefaults] boolForKey:kKeyOptions_SortCriteriaDidChange];
+	
+	if (infoStringsOptionChanged || sortingCriteriaChanged)
+	{
+		[self rebuildJobTableCacheWithNewSortedOrder:sortingCriteriaChanged];
 		[[self jobTableView] reloadData];
+		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:kKeyOptions_OptionsDidChange];
+		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:kKeyOptions_SortCriteriaDidChange];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+	}
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -112,7 +123,7 @@
 - (void)dealloc {
 	NSLog(@"JobOveriewViewController dealloc");
 	[cachedRowData release], cachedRowData = nil;
-	[newCachedRowData release], newCachedRowData = nil;
+	[cachedRowInfoStrings release], cachedRowInfoStrings = nil;
 	
 	[jobTableView release], jobTableView = nil;
 
@@ -124,40 +135,33 @@
 #pragma mark -
 #pragma mark Row Data Managemet
 
-- (void)updateTable
+- (void)rebuildJobTableCacheWithNewSortedOrder:(BOOL)shouldSort
 {
-	self.cachedRowData = [NSArray arrayWithArray:newCachedRowData];
-	[jobTableView reloadData];
-}
-					
-#pragma mark -
-#pragma mark UI Button Presses
-- (void)logoutButtonPressed
-{
-	[UserJobDatabase userLoggedOut];
-	[self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)optionsButtonPressed
-{
-	OptionsViewController *vc = [[OptionsViewController alloc] init];
-	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-	[self.navigationController presentModalViewController:nav animated:YES];
-	[nav release];
-	[vc release];
-}
-
-#pragma mark -
-#pragma mark UITableViewDataSource Delegate Methods
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-	return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-	NSLog(@"There are %d rows", [[self cachedRowData] count] + 1);
-	return [[self cachedRowData] count];
+	if (shouldSort)
+	{
+		// Sort according to the new key
+		NSMutableArray *newCache = [UserJobDatabase getJobItemArray];
+		
+		NSString *sortWithKey = [[NSUserDefaults standardUserDefaults] objectForKey:kOptions_SortCriteriaKey];
+		BOOL ascending = [[NSUserDefaults standardUserDefaults] boolForKey:kOptions_SortAscending];
+		
+		NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:sortWithKey ascending:ascending];
+		NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+		
+		self.cachedRowData = [[newCache sortedArrayUsingDescriptors:sortDescriptors] copy];
+		
+		[sortDescriptor release];
+		[sortDescriptors release];
+	}
+	
+	// Update the info strings for each job item
+	NSMutableArray *newCache = [[NSMutableArray alloc] initWithCapacity:[self.cachedRowData count]];
+	
+	for (int i=0;i<[self.cachedRowData count];i++)
+		[newCache addObject:[self infoStringForJobItem:[self.cachedRowData objectAtIndex:i]]];
+	
+	self.cachedRowInfoStrings = newCache;
+	[newCache release];
 }
 
 - (NSString *)infoStringForJobItem:(JobItem *)job
@@ -226,6 +230,35 @@
 	return infoText;
 }
 
+#pragma mark -
+#pragma mark UI Button Presses
+- (void)logoutButtonPressed
+{
+	[UserJobDatabase userLoggedOut];
+	[self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)optionsButtonPressed
+{
+	OptionsViewController *vc = [[OptionsViewController alloc] init];
+	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+	[self.navigationController presentModalViewController:nav animated:YES];
+	[nav release];
+	[vc release];
+}
+
+#pragma mark -
+#pragma mark UITableViewDataSource Delegate Methods
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+	return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return [[self cachedRowData] count];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	NSInteger row = indexPath.row;
@@ -240,7 +273,7 @@
 		cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
 	}
 	
-	JobItem *job = [UserJobDatabase getJobItemForJobID:[[self cachedRowData] objectAtIndex:row]];
+	JobItem *job = [[self cachedRowData] objectAtIndex:row];
 
 	/// Job title and employer
 	if (![job.appStatus isEqualToString:@""])
@@ -249,7 +282,7 @@
 		cell.textLabel.text = [NSString stringWithString:kString_NA]; // @"" String makes the label collapse
 	cell.textLabel.textAlignment = UITextAlignmentCenter;
 	
-	cell.detailTextLabel.text = [self infoStringForJobItem:job];
+	cell.detailTextLabel.text = [self.cachedRowInfoStrings objectAtIndex:row];
 	
 	return cell;
 	
@@ -260,11 +293,8 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	NSInteger row = indexPath.row;
-	JobItem *job = [UserJobDatabase getJobItemForJobID:[[self cachedRowData] objectAtIndex:row]];
 
-	// TODO: Need to cache the info string so we don't need to compute it twice.
-	// Low priority, since performance isn't a big issue right now anyway (the app does so little).
-	NSString *cellText = [self infoStringForJobItem:job];
+	NSString *cellText = [[self cachedRowInfoStrings] objectAtIndex:row];
 	UIFont *cellFont = [UIFont systemFontOfSize:12]; 
 	CGSize constraintSize = CGSizeMake(200.0f, MAXFLOAT);
     CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
@@ -274,7 +304,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	JobItem *job = [UserJobDatabase getJobItemForJobID:[[self cachedRowData] objectAtIndex:indexPath.row]];
+	JobItem *job = [[self cachedRowData] objectAtIndex:indexPath.row];
 	 
 	NSString *jobID = job.jobIDString;
 	if ([jobID isEqualToString:@""])  // No ID found during scrapping

@@ -51,6 +51,9 @@
 #define kKeyDefaultOptionsSetForRelease1			@"kKeyDefaultOptionsSetForRelease1"
 #define kKeyOptions_ShowInfo						@"kKeyOptions_ShowInfo"
 #define kKeyOptions_OptionsDidChange				@"kKeyOptions_OptionsDidChange"
+#define kKeyOptions_SortCriteriaDidChange			@"kKeyOptions_SortCriteriaDidChange"
+#define kOptions_SortCriteriaKey					@"kOptions_SortCriteriaKey"
+#define kOptions_SortAscending						@"kOptions_SortAscending"
 
 #pragma mark -
 #pragma mark Options View Indexes/Keys
