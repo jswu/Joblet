@@ -10,6 +10,7 @@
 #import "UserJobDatabase.h"
 #import "SWLoadingView.h"
 #import "OptionsViewController.h"
+#import "Reachability.h"
 
 
 @implementation JobOverviewViewController
@@ -344,10 +345,14 @@
 - (void)requestDidFailLoadForWebView:(UIWebView *)myWebView withError:(NSError *)error
 {
 	[SWLoadingView hide];
+	
+	if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable)
+		[HelperFunction showAlertCheckConnection];
+	else
+		[HelperFunction showErrorAlertMsg:kString_FailedToFetchJobDetailsPage];
+	
 	[self.jobTableView deselectRowAtIndexPath:_lastSelectedRowIndexPath animated:YES];
 	[_lastSelectedRowIndexPath release], _lastSelectedRowIndexPath = nil;
-	
-	[HelperFunction showAlertCheckConnection];
 	self.jobDetailsViewController = nil;
 }
 

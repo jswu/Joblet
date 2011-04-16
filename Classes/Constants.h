@@ -9,12 +9,19 @@
 #pragma mark -
 #pragma mark All strings in app shown to user
 
-#define kString_GenericErrorMessage					NSLocalizedString(@"An unexpected error has occurred, please try again later\nError code: %@", @"Generic unknown error message")
+#define kString_GenericErrorMessage					NSLocalizedString(@"An unexpected error was encounter, please try again later\nError code: %@", @"Generic unknown error message")
 #define kString_NoJobDetailsPageFound				NSLocalizedString(@"Job details page not found.", @"Job details page link could not be generated simce job ID was blank")
 #define kString_JobInformation						NSLocalizedString(@"Job Information", @"Job list view heading")
 #define kString_Logout								NSLocalizedString(@"Logout", @"Job list view left bar item") 
 #define kString_Options								NSLocalizedString(@"Options", @"Job list view right bar item")
 #define kString_NA									NSLocalizedString(@"N/A", @"No data is available for a field of job item")
+#define kString_UserIDRequired						NSLocalizedString(@"Please enter your User ID.", @"Warning message when user leaves User ID field blank")
+#define kString_PasswordRequired					NSLocalizedString(@"Please enter your password.", @"Warning message when user leaves password field blank")
+#define kString_Login								NSLocalizedString(@"Login", @"Login view header")
+#define kString_NoactiveAppliedJobs					NSLocalizedString(@"Could not authenticte with JobMine (invalid credentials or JobMine is under maintenance) or you do not have any active applied jobs.", @"The user's credentials are invalid or JobMine is under maintenace, or there are no active applied jobs")
+#define kString_Information							NSLocalizedString(@"Information", @"Alert heading for general informative alerts")
+#define kString_FailedToFetchJobDetailsPage			NSLocalizedString(@"An error was encounter while retrieving the job details, please try again later.", @"Failed to get the job details page for some reason (not because of internet connection)")
+#define kString_BlankLoginPageResponseErrorMessage	NSLocalizedString(@"An error was encounter while connecting to JobMine. Please check your connection and try again.", @"A blank page was returned. Report error and prompt user to try again")
 
 // Loading Message for SWLoadingView
 #define kString_SW_Loading							NSLocalizedString(@"Loading...", @"Default loading message for the loading popup")

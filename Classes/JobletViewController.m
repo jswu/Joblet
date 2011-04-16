@@ -11,6 +11,7 @@
 #import "JobOverviewViewController.h"
 #import "SWLoadingView.h"
 #import "OptionsViewController.h"
+#import "Reachability.h"
 // HTML parsing
 #import <libxml/xmlmemory.h>
 #import <libxml/HTMLparser.h>
@@ -42,28 +43,19 @@
 	NSString *ID = [[userID.text copy] stringAfterTrim];
 	if ([ID length] == 0)
 	{
-		self.userMessages.text = NSLocalizedString(@"Please enter your User ID.", @"Warning message when user leaves User ID field blank");
+		self.userMessages.text = kString_UserIDRequired;
 		return;
 	}
 
 	NSString *PW = [[password.text copy] stringAfterTrim];
 	if ([PW length] == 0)
 	{
-		self.userMessages.text = NSLocalizedString(@"Please enter your password.", @"Warning message when user leaves password field blank");
+		self.userMessages.text = kString_PasswordRequired;
 		return;
 	}
-
-	[SWLoadingView show];
-	self.userMessages.text = @"";
-	self.password.text = @"";
-
-	NSString *stringForURL = [[NSString alloc] initWithFormat:kJobMineURL_LoginForm];
-
-	NSURL *URL = [[NSURL alloc] initWithString:stringForURL];	
-	[stringForURL release];
 	
-	self.formRequest = [[ASIFormDataRequest alloc] initWithURL:URL];
-	[URL release];
+	// Clear the error messages for blank userID or password
+	self.userMessages.text = @"";
 	
 	/*
 	 Check Constants.h for kJobMineURL_LoginForm
@@ -75,19 +67,30 @@
 	 submit:Submit
 	 */
 	
+	NSString *stringForURL = [[NSString alloc] initWithFormat:kJobMineURL_LoginForm];
+	NSURL *URL = [[NSURL alloc] initWithString:stringForURL];
+	self.formRequest = [[ASIFormDataRequest alloc] initWithURL:URL];
+	[self.formRequest release];
 	[formRequest setPostValue:[NSNumber numberWithInteger:300] forKey:@"timezoneOffset"];
 	[formRequest setPostValue:ID forKey:@"userid"];
 	[formRequest setPostValue:PW forKey:@"pwd"];
 	[formRequest setPostValue:@"Submit" forKey:@"submit"];
+	[formRequest setDelegate:self];
 	
+	[stringForURL release];
+	[URL release];
 	[ID release];
 	[PW release];
+	
+	if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable)
+	{
+		[HelperFunction showAlertCheckConnection];
+		return;
+	}
+	
 	// Bring up loading screen
-	
-	self.formRequest.delegate = self;
-//	[self fetchApplicationPage]; // Skips to test html parsing
-	NSLog(@"New debugging");
-	
+	[SWLoadingView show];
+	self.password.text = @"";
 	[self.formRequest startAsynchronous];
 }
 
@@ -96,24 +99,6 @@
 	[userID resignFirstResponder];
 	[password resignFirstResponder];
 }
-
-/*
-// The designated initializer. Override to perform setup that is required before the view is loaded.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
- 
-}
-*/
 
 - (void)optionsButtonPressed
 {
@@ -126,7 +111,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.navigationItem.title = NSLocalizedString(@"Login", @"Login view header");
+	self.navigationItem.title = kString_Login;
 	
 	self.userMessages.textAlignment = UITextAlignmentCenter;
 	self.userMessages.numberOfLines = 0;
@@ -166,8 +151,10 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	userID = nil;
-	password = nil;
+	self.userID = nil;
+	self.password = nil;
+	self.loginButton = nil;
+	self.userMessages = nil;
 }
 
 
@@ -383,7 +370,7 @@ static NSString *defaultIndent = nil;
 {
 	defaultIndent = [[NSString alloc] initWithString:@" "];
 	NSLog(@"Began fetching application page");
-		
+	
  	NSString *stringForURL = [[NSString alloc] initWithFormat:kJobMineURL_ApplicationPage];
 	
 	NSURL *URL = [[NSURL alloc] initWithString:stringForURL];	
@@ -423,12 +410,12 @@ static NSString *defaultIndent = nil;
 
 #pragma mark --
 #pragma mark ASIHTTPRequest Delegate Methods
-
+// TODO: Re-factor all network related code. Create a class that performs etwork operations.
 /* Finished reuqest from initial login has the following possibilities:
  *	-Sucessful login
  *	-Invalid credentials
  *	-Access denied (probably due to current time; JobMine is offline). Not sure if a user can be denied for other reason
- *	-No internet connection (should fall into requestFailed:)
+ *  -JobMine is down (should be caught by requestFailed:)
  */
 // Another case to consider is when the session expires.
 // Though it will not happen here, since requestFinished: will only be called when establishing new sessions.
@@ -445,7 +432,7 @@ static NSString *defaultIndent = nil;
 		if (response == nil)
 		{
 			// Page response was null, present error message to retry
-			[HelperFunction showErrorAlertMsg:NSLocalizedString(@"An error was encounter when attempting to access JobMine. Please check your connection and try again.", @"A blank page was returned. Report error and prompt user to try again")];
+			[HelperFunction showErrorAlertMsg:kString_BlankLoginPageResponseErrorMessage];
 			[SWLoadingView hide];
 			return;
 		}
@@ -486,6 +473,11 @@ static NSString *defaultIndent = nil;
 	}
 	
 	NSLog(@"Now fetching application page");
+	if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable)
+	{
+		[HelperFunction showAlertCheckConnection];
+		return;
+	}
 	[self fetchApplicationPage];
 	
 	// TODO: We may want to enable other features even though they have no job items in the applcation page.
@@ -493,8 +485,8 @@ static NSString *defaultIndent = nil;
 	if ([[UserJobDatabase getJobIDList] count] == 0)
 	{
 		// The user has no jobs on their account displayed through the applications page. Any uncaught errors would probably also end up here.
-		[HelperFunction showAlertMsg:NSLocalizedString(@"You do not have any active applied jobs.", @"When trying to login with no jobs in the job Application page") 
-						   withTitle:NSLocalizedString(@"Information", @"Alert heading for general informative alerts")];
+		[HelperFunction showAlertMsg:kString_NoactiveAppliedJobs 
+						   withTitle:kString_Information];
 		[SWLoadingView hide];
 	}
 	else
