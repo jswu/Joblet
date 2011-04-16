@@ -19,11 +19,13 @@
 #define kAppStatusCode_Offer		1 // Not sure if this is valid, but just incase...
 #define kAppStatusCode_Ranked		2 // Not sure if this is valid, but just incase...
 #define kAppStatusCode_NotRanked	3
-#define kAppStatusCode_Alternate	4
-#define kAppStatusCode_Pending		5
-#define kAppStatusCode_Applied		6
-#define kAppStatusCode_NotSelected	7
+#define kAppStatusCode_Selected		4 // TODO: Verify that the string is "Selected"
+#define kAppStatusCode_Alternate	5
+#define kAppStatusCode_Pending		6
+#define kAppStatusCode_Applied		7
+#define kAppStatusCode_NotSelected	8
 #define kAppStatusCode_Unknown		9 // For any state that I missed and blank app statuses
+// Blank states can sometimes mean "offer". One of my offers were blank, but others weren't...not sure why this happens
 
 // Usnure of existance
 #define kAppStatus_NotApplied	6

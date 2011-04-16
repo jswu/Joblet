@@ -110,6 +110,8 @@
 		code = kAppStatusCode_Ranked;
 	else if ([appStatus isEqualToString:@"Not Ranked"])
 		code = kAppStatusCode_NotRanked;
+	else if ([appStatus isEqualToString:@"Selected"])
+		code = kAppStatusCode_Selected;
 	else if ([appStatus isEqualToString:@"Alternate"])
 		code = kAppStatusCode_Alternate;
 	else if ([appStatus isEqualToString:@"Pending"])
