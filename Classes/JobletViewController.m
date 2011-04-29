@@ -485,8 +485,7 @@ static NSString *defaultIndent = nil;
 	if ([[UserJobDatabase getJobIDList] count] == 0)
 	{
 		// The user has no jobs on their account displayed through the applications page. Any uncaught errors would probably also end up here.
-		[HelperFunction showAlertMsg:kString_NoactiveAppliedJobs 
-						   withTitle:kString_Information];
+		[HelperFunction showErrorAlertMsg:kString_LoginFailedMultipleReasons];
 		[SWLoadingView hide];
 	}
 	else

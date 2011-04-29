@@ -187,7 +187,7 @@
 					tempInfo = job.unit;
 					break;
 				case kOptionsViewTableCellRowIndex_ShowNumberOfApps:
-					tempInfo = [job.numberOfApps stringValue];
+					tempInfo = [NSString stringWithFormat:kString_NumberOfApplicants, job.numberOfApps];
 					break;
 				case kOptionsViewTableCellRowIndex_ShowJobStatus:
 					tempInfo = job.jobStatus;
