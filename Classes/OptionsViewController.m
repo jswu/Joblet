@@ -28,6 +28,7 @@
     [super viewDidLoad];
 	
 	self.navigationItem.title = kString_Options;
+	self.optionTableView.backgroundColor = [UIColor clearColor];
 	
 	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
 																				   target:self 
