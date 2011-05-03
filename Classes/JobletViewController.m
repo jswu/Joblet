@@ -23,6 +23,7 @@
 @synthesize password;
 @synthesize loginButton;
 @synthesize userMessages;
+@synthesize tempUserID, tempPassword;
 @synthesize formRequest;
 
 
@@ -40,15 +41,15 @@
 
 - (IBAction)loginButtonPressed:(id)sender
 {
-	NSString *ID = [[userID.text copy] stringAfterTrim];
-	if ([ID length] == 0)
+	self.tempUserID = [[userID.text copy] stringAfterTrim];
+	if ([self.tempUserID length] == 0)
 	{
 		self.userMessages.text = kString_UserIDRequired;
 		return;
 	}
 
-	NSString *PW = [[password.text copy] stringAfterTrim];
-	if ([PW length] == 0)
+	self.tempPassword = [[password.text copy] stringAfterTrim];
+	if ([self.tempPassword length] == 0)
 	{
 		self.userMessages.text = kString_PasswordRequired;
 		return;
@@ -72,15 +73,13 @@
 	self.formRequest = [[ASIFormDataRequest alloc] initWithURL:URL];
 	[self.formRequest release];
 	[formRequest setPostValue:[NSNumber numberWithInteger:300] forKey:@"timezoneOffset"];
-	[formRequest setPostValue:ID forKey:@"userid"];
-	[formRequest setPostValue:PW forKey:@"pwd"];
+	[formRequest setPostValue:self.tempUserID forKey:@"userid"];
+	[formRequest setPostValue:self.tempPassword forKey:@"pwd"];
 	[formRequest setPostValue:@"Submit" forKey:@"submit"];
 	[formRequest setDelegate:self];
 	
 	[stringForURL release];
 	[URL release];
-	[ID release];
-	[PW release];
 	
 	if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable)
 	{
@@ -90,7 +89,11 @@
 	
 	// Bring up loading screen
 	[SWLoadingView show];
+	// Clear password field for security
 	self.password.text = @"";
+	// Slide keyboard down automatically
+	[userID resignFirstResponder];
+	[password resignFirstResponder];
 	[self.formRequest startAsynchronous];
 }
 
@@ -159,11 +162,13 @@
 
 
 - (void)dealloc {
-	[userID release];
-	[password release];
-	[loginButton release];
-	[userMessages release];
-	[formRequest release];
+	[userID release], userID = nil;
+	[password release], password = nil;
+	[loginButton release], loginButton = nil;
+	[userMessages release], userMessages = nil;
+	[tempUserID release], tempUserID = nil;
+	[tempPassword release], tempPassword = nil;
+	[formRequest release], formRequest = nil;
 	
     [super dealloc];
 }

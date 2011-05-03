@@ -22,6 +22,9 @@
 	IBOutlet UIButton *loginButton;
 	IBOutlet UILabel *userMessages;
 	
+	NSString *tempUserID;
+	NSString *tempPassword;
+	
 	ASIFormDataRequest *formRequest;
 }
 
@@ -29,6 +32,8 @@
 @property (nonatomic, retain) IBOutlet UITextField *password;
 @property (nonatomic, retain) IBOutlet UIButton *loginButton;
 @property (nonatomic, retain) IBOutlet UILabel *userMessages;
+@property (nonatomic, retain) NSString *tempUserID;
+@property (nonatomic, retain) NSString *tempPassword;
 @property (nonatomic, retain) ASIFormDataRequest *formRequest;
 
 - (IBAction)userIDDoneEditing:(id)sender;
