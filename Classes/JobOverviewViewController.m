@@ -297,11 +297,12 @@
 
 	NSString *cellText = [[self cachedRowInfoStrings] objectAtIndex:row];
 	UIFont *cellFont = [UIFont systemFontOfSize:12]; 
-	// The 91 is determined through printing out the width of the UILabel when it is drawn
-	CGSize constraintSize = CGSizeMake(91.0f, MAXFLOAT);
+	// The 190 is determined through trial and error, as the (approximately) maximum possible width of each label.
+	// It might actually be a few pixels wider, but this works
+	CGSize constraintSize = CGSizeMake(190.0f, MAXFLOAT);
     CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
 	
-    return labelSize.height + 3;
+    return labelSize.height + 15;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
