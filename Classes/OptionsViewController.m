@@ -12,6 +12,7 @@
 @implementation OptionsViewController
 
 @synthesize optionTableView;
+@synthesize picker, pickerDataSource, pickerDataSourceMapping;
 
 - (id)init
 {
@@ -35,6 +36,26 @@
 																				   action:@selector(doneButtonPressed)];
 									  
 	self.navigationItem.rightBarButtonItem = doneButton;	
+	
+	if (self.pickerDataSource == nil)
+	{
+		self.pickerDataSource = [[NSArray alloc] initWithObjects:@"one", @"two", @"three", @"four",@"one", @"two", @"three", @"four",@"one", @"two", @"three", @"four", nil];
+		[self.pickerDataSource release];
+	}
+	
+	if (self.picker == nil)
+	{
+		self.picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+		[self.picker release];
+		self.picker.delegate = self;
+		self.picker.dataSource = self;
+	}
+
+	// A mapping from a string in pickerDataSource to the corresponding name of the instnace variable in the a jobItem object
+
+	// Temporarily disable, until better UI is designed
+//	self.optionTableView.tableFooterView = picker;
+
 	[doneButton release];
 }
 
@@ -53,6 +74,10 @@
 
 - (void)dealloc {
 	[optionTableView release], optionTableView = nil;
+	
+	[picker	release], picker = nil;
+	[pickerDataSource release], pickerDataSource = nil;
+	[pickerDataSourceMapping release], pickerDataSourceMapping = nil;
 	
     [super dealloc];
 }
@@ -197,5 +222,28 @@
 	
 }
 */
+
+#pragma mark
+#pragma mark UIPickerView Delegate/Datasource Methods
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView;
+{
+	return 1;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+	NSLog(@"Selected sorting by %@", [self.pickerDataSource objectAtIndex:row]);
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
+{
+	return [self.pickerDataSource count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component;
+{
+	return [self.pickerDataSource objectAtIndex:row];
+}
 
 @end
