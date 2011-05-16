@@ -1,5 +1,17 @@
-Joblet is a free iOS app that allows students at the University of Waterloo to access JobMine and check for updates.
+blet is a free iOS app that allows students at the University of Waterloo to access JobMine and check for updates.
 The app provides a nicer user interface to the JobMine system than simply browsing to the website on a mobile browser.
 
+This repository contains the iOS version, but an Android version is currently under development.
 
+For any comments or suggestions please email jobletapp+iOS@gmail.com
+
+Licensing
+---------
+Source code under Classes directory:
 Please refer to the "LICENSE" file for licensing details.
+
+Custom images:
+All custom images are provide by Zhihao Jia licensed under Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0).
+
+For full licensing details please refer to:
+http://creativecommons.org/licenses/by-nc-sa/3.0/

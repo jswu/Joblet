@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CC46F6C1380C1DF005A3EE2 /* JobletAppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CC46F671380C1DF005A3EE2 /* JobletAppIcon.png */; };
+		0CC46F6D1380C1DF005A3EE2 /* JobletAppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CC46F681380C1DF005A3EE2 /* JobletAppIcon@2x.png */; };
+		0CC46F6F1380C1DF005A3EE2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CC46F6A1380C1DF005A3EE2 /* Default.png */; };
+		0CC46F701380C1DF005A3EE2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CC46F6B1380C1DF005A3EE2 /* Default@2x.png */; };
 		0F5EA105131DB64900801CE8 /* UserJobDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EA104131DB64900801CE8 /* UserJobDatabase.m */; };
 		0F5EA1AC131DE36200801CE8 /* NSString+CommonOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EA1AB131DE36200801CE8 /* NSString+CommonOperations.m */; };
 		0F5EA43A131E2A8300801CE8 /* JobOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EA439131E2A8300801CE8 /* JobOverviewViewController.m */; };
@@ -43,6 +47,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CC46F671380C1DF005A3EE2 /* JobletAppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = JobletAppIcon.png; path = Assets/JobletAppIcon.png; sourceTree = "<group>"; };
+		0CC46F681380C1DF005A3EE2 /* JobletAppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "JobletAppIcon@2x.png"; path = "Assets/JobletAppIcon@2x.png"; sourceTree = "<group>"; };
+		0CC46F6A1380C1DF005A3EE2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Assets/Default.png; sourceTree = "<group>"; };
+		0CC46F6B1380C1DF005A3EE2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Assets/Default@2x.png"; sourceTree = "<group>"; };
 		0F5EA103131DB64900801CE8 /* UserJobDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserJobDatabase.h; sourceTree = "<group>"; };
 		0F5EA104131DB64900801CE8 /* UserJobDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserJobDatabase.m; sourceTree = "<group>"; };
 		0F5EA1AA131DE36200801CE8 /* NSString+CommonOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CommonOperations.h"; sourceTree = "<group>"; };
@@ -150,6 +158,17 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		0CC46F661380C1C6005A3EE2 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				0CC46F671380C1DF005A3EE2 /* JobletAppIcon.png */,
+				0CC46F681380C1DF005A3EE2 /* JobletAppIcon@2x.png */,
+				0CC46F6A1380C1DF005A3EE2 /* Default.png */,
+				0CC46F6B1380C1DF005A3EE2 /* Default@2x.png */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		0F8B86AF12E3DF7B00297951 /* ASIHTTPRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +237,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				0CC46F661380C1C6005A3EE2 /* Assets */,
 				0F8B86AF12E3DF7B00297951 /* ASIHTTPRequest */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -236,7 +256,6 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* Joblet_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -247,6 +266,7 @@
 			children = (
 				0FD95B581323476E00A076B6 /* JobOverviewViewController.xib */,
 				0FEC4325134804EB0025E132 /* JobletViewController.xib */,
+				32CA4F630368D1EE00C91783 /* Joblet_Prefix.pch */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Joblet-Info.plist */,
 			);
@@ -317,6 +337,10 @@
 				0FEC4326134804EB0025E132 /* JobletViewController.xib in Resources */,
 				0FEADDB41350ED52000DF17D /* SWLoadingView.xib in Resources */,
 				0FEADF0413525F19000DF17D /* OptionsViewController.xib in Resources */,
+				0CC46F6C1380C1DF005A3EE2 /* JobletAppIcon.png in Resources */,
+				0CC46F6D1380C1DF005A3EE2 /* JobletAppIcon@2x.png in Resources */,
+				0CC46F6F1380C1DF005A3EE2 /* Default.png in Resources */,
+				0CC46F701380C1DF005A3EE2 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,7 +381,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sandy Wu (63STWN2MJY)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -366,7 +390,7 @@
 				INFOPLIST_FILE = "Joblet-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = Joblet;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4E219E13-1EE9-4CB7-B0A1-E1B6247EA778";
 			};
 			name = Debug;
 		};
@@ -387,12 +411,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sandy Wu (63STWN2MJY)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4E219E13-1EE9-4CB7-B0A1-E1B6247EA778";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
