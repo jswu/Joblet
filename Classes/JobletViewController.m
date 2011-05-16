@@ -11,7 +11,7 @@
 #import "JobOverviewViewController.h"
 #import "SWLoadingView.h"
 #import "OptionsViewController.h"
-#import "Reachability.h"
+#import "NetworkOperations.h"
 // HTML parsing
 #import <libxml/xmlmemory.h>
 #import <libxml/HTMLparser.h>
@@ -81,20 +81,23 @@
 	[stringForURL release];
 	[URL release];
 	
-	if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable)
+	if (![NetworkOperations hasNetworkConnection])
 	{
 		[HelperFunction showAlertCheckConnection];
 		return;
 	}
-	
-	// Bring up loading screen
-	[SWLoadingView show];
-	// Clear password field for security
-	self.password.text = @"";
-	// Slide keyboard down automatically
-	[userID resignFirstResponder];
-	[password resignFirstResponder];
-	[self.formRequest startAsynchronous];
+	else
+	{
+		// Bring up loading screen
+		[SWLoadingView show];
+		// Clear password field for security
+		self.password.text = @"";
+		// Slide keyboard down automatically
+		[userID resignFirstResponder];
+		[password resignFirstResponder];
+	//	[NetworkOperations requestToLoginWithUserID:self.tempUserID password:self.tempPassword callback:@selector(loginPageRequestCallback:) on:self]);
+		[self.formRequest startAsynchronous];
+	}
 }
 
 - (IBAction)backgroundTapped:(id)sender
@@ -413,6 +416,20 @@ static NSString *defaultIndent = nil;
 	
 }
 
+- (void)loginPageRequestCallback:(NSString *)response
+{
+	// Make a function to parse for errors on login
+	//[HelperFunction parseLoginPageResponse];
+}
+	/*
+	[self performSelectorOnMainThread:@selector(loginPageRequestCallbackOnMainThread:) withObject:response waitUntilDone:YES];
+}
+
+- (void)loginPageRequestCallbackOnMainThread:(NSString *)response
+{
+	
+}
+*/
 #pragma mark --
 #pragma mark ASIHTTPRequest Delegate Methods
 // TODO: Re-factor all network related code. Create a class that performs etwork operations.
@@ -478,7 +495,7 @@ static NSString *defaultIndent = nil;
 	}
 	
 	NSLog(@"Now fetching application page");
-	if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable)
+	if (![NetworkOperations hasNetworkConnection])
 	{
 		[HelperFunction showAlertCheckConnection];
 		return;

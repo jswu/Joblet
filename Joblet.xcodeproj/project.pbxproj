@@ -11,6 +11,7 @@
 		0CC46F6D1380C1DF005A3EE2 /* JobletAppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CC46F681380C1DF005A3EE2 /* JobletAppIcon@2x.png */; };
 		0CC46F6F1380C1DF005A3EE2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CC46F6A1380C1DF005A3EE2 /* Default.png */; };
 		0CC46F701380C1DF005A3EE2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CC46F6B1380C1DF005A3EE2 /* Default@2x.png */; };
+		0CC46FA51380E3E3005A3EE2 /* NetworkOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC46FA41380E3E3005A3EE2 /* NetworkOperations.m */; };
 		0F5EA105131DB64900801CE8 /* UserJobDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EA104131DB64900801CE8 /* UserJobDatabase.m */; };
 		0F5EA1AC131DE36200801CE8 /* NSString+CommonOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EA1AB131DE36200801CE8 /* NSString+CommonOperations.m */; };
 		0F5EA43A131E2A8300801CE8 /* JobOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EA439131E2A8300801CE8 /* JobOverviewViewController.m */; };
@@ -51,6 +52,8 @@
 		0CC46F681380C1DF005A3EE2 /* JobletAppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "JobletAppIcon@2x.png"; path = "Assets/JobletAppIcon@2x.png"; sourceTree = "<group>"; };
 		0CC46F6A1380C1DF005A3EE2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Assets/Default.png; sourceTree = "<group>"; };
 		0CC46F6B1380C1DF005A3EE2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Assets/Default@2x.png"; sourceTree = "<group>"; };
+		0CC46FA31380E3E3005A3EE2 /* NetworkOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkOperations.h; sourceTree = "<group>"; };
+		0CC46FA41380E3E3005A3EE2 /* NetworkOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkOperations.m; sourceTree = "<group>"; };
 		0F5EA103131DB64900801CE8 /* UserJobDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserJobDatabase.h; sourceTree = "<group>"; };
 		0F5EA104131DB64900801CE8 /* UserJobDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserJobDatabase.m; sourceTree = "<group>"; };
 		0F5EA1AA131DE36200801CE8 /* NSString+CommonOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CommonOperations.h"; sourceTree = "<group>"; };
@@ -154,6 +157,8 @@
 				0FEADF0013525F19000DF17D /* OptionsViewController.h */,
 				0FEADF0113525F19000DF17D /* OptionsViewController.m */,
 				0FEADF0213525F19000DF17D /* OptionsViewController.xib */,
+				0CC46FA31380E3E3005A3EE2 /* NetworkOperations.h */,
+				0CC46FA41380E3E3005A3EE2 /* NetworkOperations.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -371,6 +376,7 @@
 				0FF4C9C6134C075A005CD179 /* SWWebViewController.m in Sources */,
 				0FEADDB31350ED52000DF17D /* SWLoadingView.m in Sources */,
 				0FEADF0313525F19000DF17D /* OptionsViewController.m in Sources */,
+				0CC46FA51380E3E3005A3EE2 /* NetworkOperations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

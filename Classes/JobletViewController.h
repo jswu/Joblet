@@ -44,5 +44,7 @@
 
 - (void)fetchApplicationPage;
 
+- (void)loginPageRequestCallback:(NSString *)response;
+
 @end
 
