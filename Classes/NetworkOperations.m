@@ -13,10 +13,6 @@
 
 @implementation NetworkOperations
 
-// For now, just have a separate request object for each request. There are not that many anyway.
-static ASIFormDataRequest *loginRequest;
-//static ASIFormDataRequest *applicationRequest;
-
 + (BOOL)hasNetworkConnection
 {
 	return (![[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable);
@@ -24,6 +20,9 @@ static ASIFormDataRequest *loginRequest;
 
 + (void)requestToLoginWithUserID:(NSString *)userID password:(NSString *)password callback:(SEL)method on:(id)target
 {
+	NSArray *params = [[NSArray alloc] initWithObjects:userID, password, NSStringFromSelector(method), target, nil];
+	
+	[[NetworkOperations class] performSelectorInBackground:@selector(requestToLoginWithUserIDOnBackgroundThread:) withObject:params];
 	/* run the following in a background thread, synchronously
 	NSString *stringForURL = [[NSString alloc] initWithFormat:kJobMineURL_LoginForm];
 	NSURL *URL = [[NSURL alloc] initWithString:stringForURL];
@@ -41,7 +40,41 @@ static ASIFormDataRequest *loginRequest;
 	 */
 }
 
++ (void)requestToLoginWithUserIDOnBackgroundThread:(NSArray *)params
+{
+	/*
+	NSString *userID = [params objectAtIndex:0];
+	NSString *password = [params objectAtIndex:1];
+	SEL method = NSSelectorFromString([params objectAtIndex:2]);
+	id target = [params objectAtIndex:3];
+	
+	NSString *stringForURL = [[NSString alloc] initWithFormat:kJobMineURL_LoginForm];
+	NSURL *URL = [[NSURL alloc] initWithString:stringForURL];
+	ASIFormDataRequest *loginRequest = [[ASIFormDataRequest alloc] initWithURL:URL];
+	[loginRequest setPostValue:[NSNumber numberWithInteger:300] forKey:@"timezoneOffset"];
+	[loginRequest setPostValue:userID forKey:@"userid"];
+	[loginRequest setPostValue:password forKey:@"pwd"];
+	[loginRequest setPostValue:@"Submit" forKey:@"submit"];
+	[loginRequest setDelegate:[NetworkOperations class]];
+	
+	[stringForURL release];
+	[URL release];
+	[params release];
+	
+	[loginRequest startSynchronous];
+	
+	NSString *response = [[loginRequest responseString] copy];
+	[target performSelector:method withObject:response]; // Remember to release response
+	[loginRequest release];
+	*/
+}
+
 + (void)requestToApplicationsWithCallback:(SEL)method on:(id)target
+{
+	
+}
+
++ (void)requestToApplicationsWithCallbackOnBackgroundThread:(NSArray *)params
 {
 	
 }
