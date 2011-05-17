@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C2F68C513821BF800BC163D /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2F68C413821BF800BC163D /* PullRefreshTableViewController.m */; };
+		0C4607431382215100E8968C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4607421382215100E8968C /* QuartzCore.framework */; };
 		0CC46F6C1380C1DF005A3EE2 /* JobletAppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CC46F671380C1DF005A3EE2 /* JobletAppIcon.png */; };
 		0CC46F6D1380C1DF005A3EE2 /* JobletAppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CC46F681380C1DF005A3EE2 /* JobletAppIcon@2x.png */; };
 		0CC46F6F1380C1DF005A3EE2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CC46F6A1380C1DF005A3EE2 /* Default.png */; };
@@ -48,6 +50,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C2F68C313821BF800BC163D /* PullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PullRefreshTableViewController.h; path = PullToRefresh/PullRefreshTableViewController.h; sourceTree = "<group>"; };
+		0C2F68C413821BF800BC163D /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PullRefreshTableViewController.m; path = PullToRefresh/PullRefreshTableViewController.m; sourceTree = "<group>"; };
+		0C4607421382215100E8968C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0CC46F671380C1DF005A3EE2 /* JobletAppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = JobletAppIcon.png; path = Assets/JobletAppIcon.png; sourceTree = "<group>"; };
 		0CC46F681380C1DF005A3EE2 /* JobletAppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "JobletAppIcon@2x.png"; path = "Assets/JobletAppIcon@2x.png"; sourceTree = "<group>"; };
 		0CC46F6A1380C1DF005A3EE2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Assets/Default.png; sourceTree = "<group>"; };
@@ -129,6 +134,7 @@
 				0F8B8D4412E7F92300297951 /* MobileCoreServices.framework in Frameworks */,
 				0F8B8D4612E7F94B00297951 /* libz.1.2.3.dylib in Frameworks */,
 				0F8B8DA912E7FEA100297951 /* CFNetwork.framework in Frameworks */,
+				0C4607431382215100E8968C /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +167,15 @@
 				0CC46FA41380E3E3005A3EE2 /* NetworkOperations.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		0C2F68B913821BDC00BC163D /* PullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				0C2F68C313821BF800BC163D /* PullRefreshTableViewController.h */,
+				0C2F68C413821BF800BC163D /* PullRefreshTableViewController.m */,
+			);
+			name = PullToRefresh;
 			sourceTree = "<group>";
 		};
 		0CC46F661380C1C6005A3EE2 /* Assets */ = {
@@ -242,6 +257,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				0C2F68B913821BDC00BC163D /* PullToRefresh */,
 				0CC46F661380C1C6005A3EE2 /* Assets */,
 				0F8B86AF12E3DF7B00297951 /* ASIHTTPRequest */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -254,6 +270,7 @@
 				0F8B8D4312E7F92300297951 /* MobileCoreServices.framework */,
 				0F8B8D4512E7F94B00297951 /* libz.1.2.3.dylib */,
 				0F8B8DA812E7FEA100297951 /* CFNetwork.framework */,
+				0C4607421382215100E8968C /* QuartzCore.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -377,6 +394,7 @@
 				0FEADDB31350ED52000DF17D /* SWLoadingView.m in Sources */,
 				0FEADF0313525F19000DF17D /* OptionsViewController.m in Sources */,
 				0CC46FA51380E3E3005A3EE2 /* NetworkOperations.m in Sources */,
+				0C2F68C513821BF800BC163D /* PullRefreshTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
