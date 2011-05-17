@@ -108,8 +108,8 @@
 		code = kAppStatusCode_Offer;
 	else if ([appStatus isEqualToString:@"Ranked"])
 		code = kAppStatusCode_Ranked;
-	else if ([appStatus isEqualToString:@"Not Ranked"])
-		code = kAppStatusCode_NotRanked;
+	else if ([appStatus isEqualToString:@"Scheduled"])
+		code = kAppStatusCode_Scheduled;
 	else if ([appStatus isEqualToString:@"Selected"])
 		code = kAppStatusCode_Selected;
 	else if ([appStatus isEqualToString:@"Alternate"])
@@ -118,6 +118,8 @@
 		code = kAppStatusCode_Pending;
 	else if ([appStatus isEqualToString:@"Applied"])
 		code = kAppStatusCode_Applied;
+	else if ([appStatus isEqualToString:@"Not Ranked"])
+		code = kAppStatusCode_NotRanked;
 	else if ([appStatus isEqualToString:@"Not Selected"])
 		code = kAppStatusCode_NotSelected;
 	else // This includes blank application statuses
