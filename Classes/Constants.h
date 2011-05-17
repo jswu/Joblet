@@ -23,6 +23,7 @@
 #define kString_FailedToFetchJobDetailsPage			NSLocalizedString(@"An error was encounter while retrieving the job details, please try again later.", @"Failed to get the job details page for some reason (not because of internet connection)")
 #define kString_BlankLoginPageResponseErrorMessage	NSLocalizedString(@"An error was encounter while connecting to JobMine. Please check your connection and try again.", @"A blank page was returned. Report error and prompt user to try again")
 #define kString_NumberOfApplicants					NSLocalizedString(@"Number of applicants: %@", @"Text indicating the followingn umber is the number of applicants.")
+#define kString_RefreshFailed						NSLocalizedString(@"Failed to refresh. Your session might have expired or JobMine is unavailable. Please try again later by logging out and then logging in.", @"Refreshing from the Job Overview failed.")
 
 // Loading Message for SWLoadingView
 #define kString_SW_Loading							NSLocalizedString(@"Loading...", @"Default loading message for the loading popup")

@@ -42,7 +42,7 @@
 - (IBAction)loginButtonPressed:(id)sender;
 - (IBAction)backgroundTapped:(id)sender;
 
-- (void)fetchApplicationPage;
+- (void)fetchApplicationPage:(NSArray *)params;
 
 - (void)loginPageRequestCallback:(NSString *)response;
 

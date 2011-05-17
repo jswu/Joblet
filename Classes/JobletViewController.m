@@ -374,7 +374,9 @@ static NSString *defaultIndent = nil;
 	}
 }
 
-- (void)fetchApplicationPage
+// TODO: Have to move this to Network Operations/HelperFunction
+// Kind of acked this to get refresh working...
+- (void)fetchApplicationPage:(NSArray *)params
 {
 	defaultIndent = [[NSString alloc] initWithString:@" "];
 	NSLog(@"Began fetching application page");
@@ -408,7 +410,16 @@ static NSString *defaultIndent = nil;
 		xmlFreeDoc(applicationHTMLDoc);
 		applicationHTMLDoc = NULL;
 	}
-	xmlFreeDoc(applicationHTMLDoc);	
+	xmlFreeDoc(applicationHTMLDoc);
+	
+	// Temporary, to get refresh working
+	if (params != nil)
+	{
+		// TODO: IMPORTANT: Make a request here to reset the JobMine session expiration time
+		SEL method = NSSelectorFromString([params objectAtIndex:0]);
+		id target = [params objectAtIndex:1];
+		[target performSelectorOnMainThread:method withObject:nil waitUntilDone:NO];
+	}
 }
 
 - (void)parseLoginPage:(htmlNodePtr)node
@@ -500,7 +511,7 @@ static NSString *defaultIndent = nil;
 		[HelperFunction showAlertCheckConnection];
 		return;
 	}
-	[self fetchApplicationPage];
+	[self fetchApplicationPage:nil];
 	
 	// TODO: We may want to enable other features even though they have no job items in the applcation page.
 	// Though those cases will need to be considered when we support more than just the Application page.
@@ -515,6 +526,7 @@ static NSString *defaultIndent = nil;
 		[SWLoadingView hide];
 		// load the table view here
 		JobOverviewViewController *nextView = [[JobOverviewViewController alloc] init];
+		nextView.jvc = self;
 		[self.navigationController pushViewController:nextView animated:YES];
 		[nextView release];
 		

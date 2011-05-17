@@ -13,6 +13,8 @@
 static NSMutableArray *jobIDList = nil;
 static NSMutableDictionary *jobItemLookup = nil;
 
+static BOOL dirtyJobList = NO;
+
 #pragma mark -
 #pragma mark Database Management
 
@@ -49,14 +51,20 @@ static NSMutableDictionary *jobItemLookup = nil;
 	// We're assuming job IDs are unique, not sure if this assumption will hold
 	if ([jobIDList containsObject:jobID])
 	{
-		NSLog(@"UserJobDatabase: WARNING:\n%@\nJobItem already exists, skipping add", item);
-		return;
+		// Update existing job details
+		// Since we only fetch the applications page, we can safely overwrite the existing object.
+		// Need to update the job per field when we start fetching data from multiple pages.
+		NSLog(@"Database Debug: Updating to object:\n%@", item);
+		[jobItemLookup setObject:item forKey:jobID];
 	}
-	
-	NSLog(@"Debug: Adding object:\n%@", item);
-	
-	[jobIDList addObject:jobID];
-	[jobItemLookup setObject:item forKey:jobID];
+	else
+	{
+		// Add new job and details
+		NSLog(@"Database Debug: Adding object:\n%@", item);
+		[jobIDList addObject:jobID];
+		[jobItemLookup setObject:item forKey:jobID];
+	}
+	[UserJobDatabase setDirtyJobList:YES];
 }
 
 + (JobItem *)getJobItemForJobID:(NSNumber *)key
@@ -76,6 +84,16 @@ static NSMutableDictionary *jobItemLookup = nil;
 	}
 	
 	return retArray;
+}
+
++ (BOOL)dirtyJobList
+{
+	return dirtyJobList;
+}
+
++ (void)setDirtyJobList:(BOOL)flag
+{
+	dirtyJobList = flag;
 }
 
 @end

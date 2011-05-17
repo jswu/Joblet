@@ -21,5 +21,7 @@
 + (void)addJobItem:(JobItem *)item;
 + (JobItem *)getJobItemForJobID:(NSNumber *)key;
 + (NSMutableArray *)getJobItemArray;
++ (BOOL)dirtyJobList;
++ (void)setDirtyJobList:(BOOL)flag;
 
 @end

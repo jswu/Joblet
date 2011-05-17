@@ -10,7 +10,8 @@
 #import "UserJobDatabase.h"
 #import "SWLoadingView.h"
 #import "OptionsViewController.h"
-#import "Reachability.h"
+#import "NetworkOperations.h"
+#import "JobletViewController.h"
 
 
 @implementation JobOverviewViewController
@@ -18,6 +19,7 @@
 @synthesize cachedRowData, cachedRowInfoStrings;
 @synthesize jobTableView;
 @synthesize jobDetailsViewController;
+@synthesize jvc;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -348,7 +350,7 @@
 {
 	[SWLoadingView hide];
 	
-	if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable)
+	if (![NetworkOperations hasNetworkConnection])
 		[HelperFunction showAlertCheckConnection];
 	else
 		[HelperFunction showErrorAlertMsg:kString_FailedToFetchJobDetailsPage];
@@ -365,6 +367,49 @@
 	[self.navigationController pushViewController:jobDetailsViewController animated:YES];	
 	self.jobDetailsViewController = nil;
 	
+ }
+
+#pragma mark -
+#pragma mark PullRefreshTableViewController Refresh Method
+
+- (void)refresh {
+//    [self performSelector:@selector(addItem) withObject:nil afterDelay:2.0];
+	[SWLoadingView show];
+	
+	if (![NetworkOperations hasNetworkConnection])
+	{
+		[HelperFunction showAlertCheckConnection];
+		[SWLoadingView hide];
+		[self stopLoading];
+		return;
+	}
+	
+	NSArray *params = [[NSArray alloc] initWithObjects:NSStringFromSelector(@selector(refreshCallback)), self, nil];
+	[jvc performSelectorInBackground:@selector(fetchApplicationPage:) withObject:params];
+	[params release];
+}
+
+- (void) refreshCallback
+{
+	if ([UserJobDatabase dirtyJobList])
+	{
+		[UserJobDatabase setDirtyJobList:NO];
+		lastRefreshed = [NSDate date];
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+		[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+		[dateFormatter setDateStyle:NSDateFormatterShortStyle];
+		refreshDateLabel.text = [dateFormatter stringFromDate:lastRefreshed];
+		[dateFormatter release];
+		[self rebuildJobTableCacheWithNewSortedOrder:YES];
+		[self.jobTableView reloadData];
+	}
+	else
+	{
+		[HelperFunction showErrorAlertMsg:kString_RefreshFailed];
+	}
+
+	[SWLoadingView hide];
+	[self stopLoading];
 }
 
 @end

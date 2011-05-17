@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "SWWebViewController.h"
+#import "PullRefreshTableViewController.h"
 
 @class SWWebViewController;
 @class JobItem;
+@class JobletViewController;
 
-@interface JobOverviewViewController : UIViewController 
+@interface JobOverviewViewController : PullRefreshTableViewController 
 <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, 
 SWWebViewControllerDelegate> {
 	NSIndexPath				*_lastSelectedRowIndexPath;
@@ -22,12 +24,18 @@ SWWebViewControllerDelegate> {
 	IBOutlet UITableView	*jobTableView;
 	
 	SWWebViewController		*jobDetailsViewController;
+	
+	// Temporary to get refresh working
+	JobletViewController *jvc;
 }
 
 @property (nonatomic, retain) NSArray				*cachedRowData;
 @property (nonatomic, retain) NSArray				*cachedRowInfoStrings;
 @property (nonatomic, retain) IBOutlet UITableView	*jobTableView;
 @property (nonatomic, retain) SWWebViewController	*jobDetailsViewController;
+
+// Temporary to get refresh working
+@property (nonatomic, assign) JobletViewController *jvc;
 
 - (void)rebuildJobTableCacheWithNewSortedOrder:(BOOL)shouldSort;
 - (NSString *)infoStringForJobItem:(JobItem *)job;
