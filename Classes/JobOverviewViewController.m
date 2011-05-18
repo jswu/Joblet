@@ -17,7 +17,6 @@
 @implementation JobOverviewViewController
 
 @synthesize cachedRowData, cachedRowInfoStrings;
-@synthesize jobTableView;
 @synthesize jobDetailsViewController;
 @synthesize jvc;
 
@@ -44,12 +43,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
-	jobTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 420)];
-	[jobTableView setDelegate:self];
-	[jobTableView setDataSource:self];
-	[self.view addSubview:jobTableView];
-	
+		
 	self.navigationItem.title = kString_JobInformation;
 	
 	UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:kString_Logout
@@ -83,7 +77,7 @@
 	if (infoStringsOptionChanged || sortingCriteriaChanged)
 	{
 		[self rebuildJobTableCacheWithNewSortedOrder:sortingCriteriaChanged];
-		[[self jobTableView] reloadData];
+		[[self tableView] reloadData];
 		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:kKeyOptions_OptionsDidChange];
 		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:kKeyOptions_SortCriteriaDidChange];
 		[[NSUserDefaults standardUserDefaults] synchronize];
@@ -96,7 +90,7 @@
 	
 	if (_lastSelectedRowIndexPath != nil)
 	{
-		[self.jobTableView deselectRowAtIndexPath:_lastSelectedRowIndexPath animated:animated];
+		[self.tableView deselectRowAtIndexPath:_lastSelectedRowIndexPath animated:animated];
 		[_lastSelectedRowIndexPath release], _lastSelectedRowIndexPath = nil;
 	}
 }
@@ -127,8 +121,6 @@
 	NSLog(@"JobOveriewViewController dealloc");
 	[cachedRowData release], cachedRowData = nil;
 	[cachedRowInfoStrings release], cachedRowInfoStrings = nil;
-	
-	[jobTableView release], jobTableView = nil;
 
 	[jobDetailsViewController release], jobDetailsViewController = nil;
     
@@ -355,7 +347,7 @@
 	else
 		[HelperFunction showErrorAlertMsg:kString_FailedToFetchJobDetailsPage];
 	
-	[self.jobTableView deselectRowAtIndexPath:_lastSelectedRowIndexPath animated:YES];
+	[self.tableView deselectRowAtIndexPath:_lastSelectedRowIndexPath animated:YES];
 	[_lastSelectedRowIndexPath release], _lastSelectedRowIndexPath = nil;
 	self.jobDetailsViewController = nil;
 }
@@ -389,7 +381,7 @@
 	[params release];
 }
 
-- (void) refreshCallback
+- (void)refreshCallback
 {
 	if ([UserJobDatabase dirtyJobList])
 	{
@@ -401,7 +393,7 @@
 		refreshDateLabel.text = [dateFormatter stringFromDate:lastRefreshed];
 		[dateFormatter release];
 		[self rebuildJobTableCacheWithNewSortedOrder:YES];
-		[self.jobTableView reloadData];
+		[self.tableView reloadData];
 	}
 	else
 	{

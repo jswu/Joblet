@@ -21,7 +21,6 @@ SWWebViewControllerDelegate> {
 	
 	NSArray					*cachedRowData;
 	NSArray					*cachedRowInfoStrings;
-	IBOutlet UITableView	*jobTableView;
 	
 	SWWebViewController		*jobDetailsViewController;
 	
@@ -31,7 +30,6 @@ SWWebViewControllerDelegate> {
 
 @property (nonatomic, retain) NSArray				*cachedRowData;
 @property (nonatomic, retain) NSArray				*cachedRowInfoStrings;
-@property (nonatomic, retain) IBOutlet UITableView	*jobTableView;
 @property (nonatomic, retain) SWWebViewController	*jobDetailsViewController;
 
 // Temporary to get refresh working
