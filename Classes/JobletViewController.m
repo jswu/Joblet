@@ -375,9 +375,14 @@ static NSString *defaultIndent = nil;
 }
 
 // TODO: Have to move this to Network Operations/HelperFunction
-// Kind of acked this to get refresh working...
+// Kind of hacked this to get refresh working...This is temporary until NetworkOperations is finishes
 - (void)fetchApplicationPage:(NSArray *)params
 {
+    // Also temporary, to prevent leaks when called form the background thread
+    NSAutoreleasePool *pool;
+    if (![NSThread isMainThread])
+        pool = [[NSAutoreleasePool alloc] init];
+    
 	defaultIndent = [[NSString alloc] initWithString:@" "];
 	NSLog(@"Began fetching application page");
 	
@@ -420,6 +425,9 @@ static NSString *defaultIndent = nil;
 		id target = [params objectAtIndex:1];
 		[target performSelectorOnMainThread:method withObject:nil waitUntilDone:NO];
 	}
+    
+    if (![NSThread isMainThread])
+        [pool drain];
 }
 
 - (void)parseLoginPage:(htmlNodePtr)node
