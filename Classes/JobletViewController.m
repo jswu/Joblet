@@ -12,6 +12,7 @@
 #import "SWLoadingView.h"
 #import "OptionsViewController.h"
 #import "NetworkOperations.h"
+#import "AboutViewController.h"
 // HTML parsing
 #import <libxml/xmlmemory.h>
 #import <libxml/HTMLparser.h>
@@ -115,6 +116,15 @@
 	[vc release];
 }
 
+- (void)aboutButtonPressed
+{
+	AboutViewController *vc = [[AboutViewController alloc] init];
+	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+	[self.navigationController presentModalViewController:nav animated:YES];
+	[nav release];
+	[vc release];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.navigationItem.title = kString_Login;
@@ -127,7 +137,15 @@
 																	 target:self 
 																	 action:@selector(optionsButtonPressed)];
 	self.navigationItem.rightBarButtonItem = optionsButton;	
+    
+	UIBarButtonItem *aboutButton = [[UIBarButtonItem alloc] initWithTitle:kString_About
+                                                                    style:UIBarButtonItemStyleBordered 
+                                                                    target:self 
+                                                                    action:@selector(aboutButtonPressed)];
+	self.navigationItem.leftBarButtonItem = aboutButton;
+    
 	[optionsButton release];
+	[aboutButton release];
 }	
 
 - (void)viewDidDisappear:(BOOL)animated

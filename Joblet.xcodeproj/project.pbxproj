@@ -24,6 +24,8 @@
 		0F8B8D4412E7F92300297951 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8B8D4312E7F92300297951 /* MobileCoreServices.framework */; };
 		0F8B8D4612E7F94B00297951 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8B8D4512E7F94B00297951 /* libz.1.2.3.dylib */; };
 		0F8B8DA912E7FEA100297951 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8B8DA812E7FEA100297951 /* CFNetwork.framework */; };
+		0F97098D1384A3E3008FDC19 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F97098B1384A3E2008FDC19 /* AboutViewController.m */; };
+		0F97098E1384A3E3008FDC19 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F97098C1384A3E3008FDC19 /* AboutViewController.xib */; };
 		0FD95B591323476E00A076B6 /* JobOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD95B581323476E00A076B6 /* JobOverviewViewController.xib */; };
 		0FEADDB31350ED52000DF17D /* SWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEADDB11350ED52000DF17D /* SWLoadingView.m */; };
 		0FEADDB41350ED52000DF17D /* SWLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEADDB21350ED52000DF17D /* SWLoadingView.xib */; };
@@ -74,6 +76,9 @@
 		0F8B8D4312E7F92300297951 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0F8B8D4512E7F94B00297951 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		0F8B8DA812E7FEA100297951 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0F97098A1384A3E2008FDC19 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		0F97098B1384A3E2008FDC19 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		0F97098C1384A3E3008FDC19 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		0FD95B581323476E00A076B6 /* JobOverviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = JobOverviewViewController.xib; path = Classes/JobOverviewViewController.xib; sourceTree = "<group>"; };
 		0FEADDB01350ED52000DF17D /* SWLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWLoadingView.h; sourceTree = "<group>"; };
 		0FEADDB11350ED52000DF17D /* SWLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWLoadingView.m; sourceTree = "<group>"; };
@@ -167,6 +172,9 @@
 				0FEADF0213525F19000DF17D /* OptionsViewController.xib */,
 				0CC46FA31380E3E3005A3EE2 /* NetworkOperations.h */,
 				0CC46FA41380E3E3005A3EE2 /* NetworkOperations.m */,
+				0F97098A1384A3E2008FDC19 /* AboutViewController.h */,
+				0F97098B1384A3E2008FDC19 /* AboutViewController.m */,
+				0F97098C1384A3E3008FDC19 /* AboutViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -367,6 +375,7 @@
 				0CC46F6F1380C1DF005A3EE2 /* Default.png in Resources */,
 				0CC46F701380C1DF005A3EE2 /* Default@2x.png in Resources */,
 				0C460753138226B800E8968C /* arrow.png in Resources */,
+				0F97098E1384A3E3008FDC19 /* AboutViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +408,7 @@
 				0FEADF0313525F19000DF17D /* OptionsViewController.m in Sources */,
 				0CC46FA51380E3E3005A3EE2 /* NetworkOperations.m in Sources */,
 				0C2F68C513821BF800BC163D /* PullRefreshTableViewController.m in Sources */,
+				0F97098D1384A3E3008FDC19 /* AboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
