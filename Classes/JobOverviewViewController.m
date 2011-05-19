@@ -61,6 +61,13 @@
 	self.navigationItem.rightBarButtonItem = optionsButton;	
 	[optionsButton release];
 	
+    // Update tethe Last Refreshed date with the correct text
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    refreshDateLabel.text = [NSString stringWithFormat:@"%@%@", kString_LastRefreshed, [dateFormatter stringFromDate:lastRefreshed]];
+    [dateFormatter release];
+    
 	if (self.cachedRowData || self.cachedRowInfoStrings == nil)
 	{
 		[self rebuildJobTableCacheWithNewSortedOrder:YES];
@@ -390,7 +397,7 @@
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 		[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
 		[dateFormatter setDateStyle:NSDateFormatterShortStyle];
-		refreshDateLabel.text = [dateFormatter stringFromDate:lastRefreshed];
+		refreshDateLabel.text = [NSString stringWithFormat:@"%@%@", kString_LastRefreshed, [dateFormatter stringFromDate:lastRefreshed]];
 		[dateFormatter release];
 		[self rebuildJobTableCacheWithNewSortedOrder:YES];
 		[self.tableView reloadData];

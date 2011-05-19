@@ -25,6 +25,7 @@
 #define kString_NumberOfApplicants					NSLocalizedString(@"Number of applicants: %@", @"Text indicating the followingn umber is the number of applicants.")
 #define kString_RefreshFailed						NSLocalizedString(@"Failed to refresh. Your session might have expired or JobMine is unavailable. Please try again later by logging out and then logging in.", @"Refreshing from the Job Overview failed.")
 #define kString_About								NSLocalizedString(@"About", @"Login screen left bar item, information related to the app")
+#define kString_LastRefreshed						NSLocalizedString(@"Last Refreshed: ", @"Prefix for the last refreshed time")
 
 // Loading Message for SWLoadingView
 #define kString_SW_Loading							NSLocalizedString(@"Loading...", @"Default loading message for the loading popup")
