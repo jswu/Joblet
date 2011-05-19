@@ -17,6 +17,8 @@
 
 + (BOOL)hasNetworkConnection;
 
++ (void)resetJobMineTimeout;
+
 + (void)requestToLoginWithUserID:(NSString *)userID password:(NSString *)password callback:(SEL)method on:(id)target;
 + (void)requestToApplicationsWithCallback:(SEL)method on:(id)target;
 

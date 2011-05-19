@@ -57,6 +57,7 @@
 
 #pragma mark -
 #pragma mark JobMine Specific Strings
+
 #define kJobMineStrings_Employed                    @"Employed"
 #define kJobMineStrings_Offer                       @"Offer"
 #define kJobMineStrings_Ranked                      @"Ranked"

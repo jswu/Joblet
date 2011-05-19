@@ -420,7 +420,9 @@ static NSString *defaultIndent = nil;
 	// Temporary, to get refresh working
 	if (params != nil)
 	{
-		// TODO: IMPORTANT: Make a request here to reset the JobMine session expiration time
+		// Make the request to reset the JobMine timeout
+		[NetworkOperations resetJobMineTimeout];
+		// Perform the callback
 		SEL method = NSSelectorFromString([params objectAtIndex:0]);
 		id target = [params objectAtIndex:1];
 		[target performSelectorOnMainThread:method withObject:nil waitUntilDone:NO];
