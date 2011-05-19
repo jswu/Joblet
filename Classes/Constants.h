@@ -46,7 +46,7 @@
 
 // HelperFunction strings
 #define kString_Error								NSLocalizedString(@"Error", "Error alert heading")
-#define kString_CheckInternetConnection				NSLocalizedString(@"Could not connection to JobMine. Please make sure that you are connected to the internet and try again.", @"No internet connection error message")
+#define kString_CheckInternetConnection				NSLocalizedString(@"Could not connect to JobMine. Please make sure that you are connected to the internet and try again.", @"No internet connection error message")
 #define kString_OK									NSLocalizedString(@"OK", "Button option")
 
 #pragma mark -
