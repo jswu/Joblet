@@ -53,6 +53,21 @@
 #define kJobMineURL_LoginForm						@"https://jobmine.ccol.uwaterloo.ca/servlets/iclientservlet/ES/?cmd=login&languageCd=ENG&sessionId="
 #define kJobMineURL_ApplicationPage					@"https://jobmine.ccol.uwaterloo.ca/servlets/iclientservlet/ES/?ICType=Panel&Menu=UW_CO_STUDENTS&Market=GBL&PanelGroupName=UW_CO_APP_SUMMARY&RL=&target=main0&navc=4844"
 #define kJobMineURL_JobDetailsPageBaseURL			@"https://jobmine.ccol.uwaterloo.ca/servlets/iclientservlet/SS/?Menu=UW_CO_STUDENTS&Component=UW_CO_JOBDTLS&Market=GBL&Page=UW_CO_STU_JOBDTLS&Action=U&target=Transfer20&UW_CO_JOB_ID=%@"
+#define kJobMineURL_ResetTimeout					@"https://jobmine.ccol.uwaterloo.ca//servlets/iclientservlet/SS/servlets/iclientservlet/SS/?cmd=resettimeout"           
+
+#pragma mark -
+#pragma mark JobMine Specific Strings
+#define kJobMineStrings_Employed                    @"Employed"
+#define kJobMineStrings_Offer                       @"Offer"
+#define kJobMineStrings_Ranked                      @"Ranked"
+#define kJobMineStrings_Scheduled                   @"Scheduled"
+#define kJobMineStrings_Selected                    @"Selected"
+#define kJobMineStrings_Alternate                   @"Alternate"
+#define kJobMineStrings_Pending                     @"Pending"
+#define kJobMineStrings_Applied                     @"Applied"
+#define kJobMineStrings_NotRanked                   @"Not Ranked"
+#define kJobMineStrings_NotSelected                 @"Not Selected"
+#define kJobMineStrings_ResetTimeoutSuccess         @"Timeout has been reset!"
 
 #pragma mark -
 #pragma mark User Default Keys

@@ -102,25 +102,25 @@
 	// In the options they can make this apply only to the appStatus text or the whole bcakground. Or none at all (maybe?)
 //	UIColor *colour;
 	
-	if ([appStatus isEqualToString:@"Employed"])
+	if ([appStatus isEqualToString:kJobMineStrings_Employed])
 		code = kAppStatusCode_Employed;
-	else if ([appStatus isEqualToString:@"Offer"])
+	else if ([appStatus isEqualToString:kJobMineStrings_Offer])
 		code = kAppStatusCode_Offer;
-	else if ([appStatus isEqualToString:@"Ranked"])
+	else if ([appStatus isEqualToString:kJobMineStrings_Ranked])
 		code = kAppStatusCode_Ranked;
-	else if ([appStatus isEqualToString:@"Scheduled"])
+	else if ([appStatus isEqualToString:kJobMineStrings_Scheduled])
 		code = kAppStatusCode_Scheduled;
-	else if ([appStatus isEqualToString:@"Selected"])
+	else if ([appStatus isEqualToString:kJobMineStrings_Selected])
 		code = kAppStatusCode_Selected;
-	else if ([appStatus isEqualToString:@"Alternate"])
+	else if ([appStatus isEqualToString:kJobMineStrings_Alternate])
 		code = kAppStatusCode_Alternate;
-	else if ([appStatus isEqualToString:@"Pending"])
+	else if ([appStatus isEqualToString:kJobMineStrings_Pending])
 		code = kAppStatusCode_Pending;
-	else if ([appStatus isEqualToString:@"Applied"])
+	else if ([appStatus isEqualToString:kJobMineStrings_Applied])
 		code = kAppStatusCode_Applied;
-	else if ([appStatus isEqualToString:@"Not Ranked"])
+	else if ([appStatus isEqualToString:kJobMineStrings_NotRanked])
 		code = kAppStatusCode_NotRanked;
-	else if ([appStatus isEqualToString:@"Not Selected"])
+	else if ([appStatus isEqualToString:kJobMineStrings_NotSelected])
 		code = kAppStatusCode_NotSelected;
 	else // This includes blank application statuses
 		code = kAppStatusCode_Unknown;
