@@ -400,41 +400,44 @@ static NSString *defaultIndent = nil;
     NSAutoreleasePool *pool;
     if (![NSThread isMainThread])
         pool = [[NSAutoreleasePool alloc] init];
-    
+	
 	defaultIndent = [[NSString alloc] initWithString:@" "];
 	NSLog(@"Began fetching application page");
 	
  	NSString *stringForURL = [[NSString alloc] initWithFormat:kJobMineURL_ApplicationPage];
 	
 	NSURL *URL = [[NSURL alloc] initWithString:stringForURL];	
-	[stringForURL release];
-	
 	self.formRequest = [[ASIFormDataRequest alloc] initWithURL:URL];
-	[URL release];
 	[self.formRequest startSynchronous];
-	
-	NSString *applicationPage = [self.formRequest responseString];
-	
-	//NSLog(@"file content:\n%@", applicationPage);
-	
-	NSLog(@"Commencing html parse:");
-	
-	xmlChar *applicationSectionHTML = xmlCharStrdup([applicationPage UTF8String]);
-	htmlDocPtr applicationHTMLDoc = htmlParseDoc(applicationSectionHTML, NULL);
-	
-	if (applicationHTMLDoc != NULL)
-	{
-		htmlNodePtr applicationRoot = xmlDocGetRootElement(applicationHTMLDoc);
-		if (applicationRoot != NULL)
-		{
-			NSLog(@"Traversing parse tree");
-			[self parseNode:applicationRoot withIndent:[NSString stringWithString:@""]];
-		}
-		xmlFreeDoc(applicationHTMLDoc);
-		applicationHTMLDoc = NULL;
-	}
-	xmlFreeDoc(applicationHTMLDoc);
-	
+	[stringForURL release];
+	[URL release];
+	NSString *response = [self.formRequest responseString];
+
+    if (response != nil)
+    {
+        NSLog(@"Application page response not nil.");
+        
+        NSString *applicationPage = [[NSString alloc] initWithString:response];
+        
+        xmlChar *applicationSectionHTML = xmlCharStrdup([applicationPage UTF8String]);
+        htmlDocPtr applicationHTMLDoc = htmlParseDoc(applicationSectionHTML, NULL);
+        
+        if (applicationHTMLDoc != NULL)
+        {
+            htmlNodePtr applicationRoot = xmlDocGetRootElement(applicationHTMLDoc);
+            if (applicationRoot != NULL)
+            {
+                NSLog(@"Traversing parse tree");
+                [self parseNode:applicationRoot withIndent:[NSString stringWithString:@""]];
+            }
+            xmlFreeDoc(applicationHTMLDoc);
+            applicationHTMLDoc = NULL;
+        }
+        xmlFreeDoc(applicationHTMLDoc);
+        
+        [applicationPage release];
+    }
+    
 	// Temporary, to get refresh working
 	if (params != nil)
 	{
