@@ -108,7 +108,8 @@
 #define kOptionsViewTableCellRowIndex_ShowRankByUser			10
 #define kOptionsViewTableCellRowIndex_ShowRankByEmployer		11
 
-#define kNumberOfShowInfoOptions								12
+// Temporarily disable the interview related information because that logic for parsing that page has not been implemented yet
+#define kNumberOfShowInfoOptions								8
 
 #pragma mark -
 #pragma mark SFHFKeychainUtils Related Constants
