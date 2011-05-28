@@ -17,7 +17,7 @@
 #define kString_NA									NSLocalizedString(@"N/A", @"No data is available for a field of job item")
 #define kString_UserIDRequired						NSLocalizedString(@"Please enter your User ID.", @"Warning message when user leaves User ID field blank")
 #define kString_PasswordRequired					NSLocalizedString(@"Please enter your password.", @"Warning message when user leaves password field blank")
-#define kString_Login								NSLocalizedString(@"Login to JobMine", @"Login view header")
+#define kString_LoginToJobMine						NSLocalizedString(@"Login to JobMine", @"Login view header")
 #define kString_LoginFailedMultipleReasons			NSLocalizedString(@"Could not login to JobMine. Please check your credentials and ensure that JobMine is available. (Alternatively this could also mean that you have no active applied jobs.)", @"The user's credentials are invalid or JobMine is under maintenace, or there are no active applied jobs")
 #define kString_Information							NSLocalizedString(@"Information", @"Alert heading for general informative alerts")
 #define kString_FailedToFetchJobDetailsPage			NSLocalizedString(@"An error was encounter while retrieving the job details, please try again later.", @"Failed to get the job details page for some reason (not because of internet connection)")
@@ -26,6 +26,7 @@
 #define kString_RefreshFailed						NSLocalizedString(@"Failed to refresh. Your session might have expired or JobMine is unavailable. Please try again later by logging out and then logging in.", @"Refreshing from the Job Overview failed.")
 #define kString_About								NSLocalizedString(@"About", @"Login screen left bar item, information related to the app")
 #define kString_LastRefreshed						NSLocalizedString(@"Last Refreshed: ", @"Prefix for the last refreshed time")
+#define kString_Login                               NSLocalizedString(@"Login", @"Login button title")
 
 // Loading Message for SWLoadingView
 #define kString_SW_Loading							NSLocalizedString(@"Loading...", @"Default loading message for the loading popup")

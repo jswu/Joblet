@@ -19,7 +19,7 @@
 @interface JobletViewController : UIViewController<ASIHTTPRequestDelegate> {
 	IBOutlet UITextField *userID;
 	IBOutlet UITextField *password;
-	IBOutlet UIButton *loginButton;
+	IBOutlet UISegmentedControl *loginButton;
 	IBOutlet UILabel *userMessages;
 	
 	NSString *tempUserID;
@@ -30,7 +30,7 @@
 
 @property (nonatomic, retain) IBOutlet UITextField *userID;
 @property (nonatomic, retain) IBOutlet UITextField *password;
-@property (nonatomic, retain) IBOutlet UIButton *loginButton;
+@property (nonatomic, retain) IBOutlet UISegmentedControl *loginButton;
 @property (nonatomic, retain) IBOutlet UILabel *userMessages;
 @property (nonatomic, copy) NSString *tempUserID;
 @property (nonatomic, copy) NSString *tempPassword;

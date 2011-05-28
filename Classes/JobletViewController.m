@@ -127,7 +127,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.navigationItem.title = kString_Login;
+	self.navigationItem.title = kString_LoginToJobMine;
 	
 	self.userMessages.textAlignment = UITextAlignmentCenter;
 	self.userMessages.numberOfLines = 0;
@@ -146,6 +146,22 @@
     
 	[optionsButton release];
 	[aboutButton release];
+    
+    // The login button
+    NSArray *loginTitle = [[NSArray alloc] initWithObjects:kString_Login    , nil];
+    self.loginButton = [[UISegmentedControl alloc] initWithItems:loginTitle];
+    [self.loginButton release];
+    CGRect frame = CGRectMake(115, 151, 87, 35);
+    self.loginButton.frame = frame;
+    
+    self.loginButton.selectedSegmentIndex = -1;
+    [self.loginButton addTarget:self action:@selector(loginButtonPressed:) forControlEvents:UIControlEventValueChanged];
+    
+    self.loginButton.segmentedControlStyle = UISegmentedControlStyleBar;
+    self.loginButton.tintColor = [UIColor colorWithRed:0/255.0f green:130.0f/255.0f blue:200.0f/255.0f alpha:0.8f];
+    self.loginButton.momentary = YES;
+    self.loginButton.alpha = 0.9;
+    [self.view addSubview:self.loginButton];
 }	
 
 - (void)viewDidDisappear:(BOOL)animated
