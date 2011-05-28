@@ -21,7 +21,8 @@
 	IBOutlet UITextField *password;
 	IBOutlet UISegmentedControl *loginButton;
 	IBOutlet UILabel *userMessages;
-	
+    IBOutlet UISwitch *rememberMeSwitch;
+    
 	NSString *tempUserID;
 	NSString *tempPassword;
 	
@@ -32,6 +33,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *password;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *loginButton;
 @property (nonatomic, retain) IBOutlet UILabel *userMessages;
+@property (nonatomic, retain) IBOutlet UISwitch *rememberMeSwitch;
 @property (nonatomic, copy) NSString *tempUserID;
 @property (nonatomic, copy) NSString *tempPassword;
 @property (nonatomic, retain) ASIFormDataRequest *formRequest;
@@ -41,6 +43,8 @@
 
 - (IBAction)loginButtonPressed:(id)sender;
 - (IBAction)backgroundTapped:(id)sender;
+
+- (IBAction)rememberMeSwitchToggled:(id)sender;
 
 - (void)fetchApplicationPage:(NSArray *)params;
 

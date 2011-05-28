@@ -13,6 +13,7 @@
 #import "OptionsViewController.h"
 #import "NetworkOperations.h"
 #import "AboutViewController.h"
+#import "SFHFKeychainUtils.h"
 // HTML parsing
 #import <libxml/xmlmemory.h>
 #import <libxml/HTMLparser.h>
@@ -24,6 +25,7 @@
 @synthesize password;
 @synthesize loginButton;
 @synthesize userMessages;
+@synthesize rememberMeSwitch;
 @synthesize tempUserID, tempPassword;
 @synthesize formRequest;
 
@@ -58,7 +60,7 @@
 	
 	// Clear the error messages for blank userID or password
 	self.userMessages.text = @"";
-	
+	    
 	/*
 	 Check Constants.h for kJobMineURL_LoginForm
 	 Jobmine form fields
@@ -91,8 +93,9 @@
 	{
 		// Bring up loading screen
 		[SWLoadingView show];
-		// Clear password field for security
-		self.password.text = @"";
+		// Clear password field for security, if the user does not have "Remember me" enabled
+        if (![rememberMeSwitch isOn])
+            self.password.text = @"";
 		// Slide keyboard down automatically
 		[userID resignFirstResponder];
 		[password resignFirstResponder];
@@ -105,6 +108,42 @@
 {
 	[userID resignFirstResponder];
 	[password resignFirstResponder];
+}
+
+- (IBAction)rememberMeSwitchToggled:(id)sender
+{
+    BOOL switchStateIsOn = [self.rememberMeSwitch isOn];
+    
+    // Switch value has already changed, if it is now toggled to Off, then clear data
+    if (!switchStateIsOn)
+    {
+        // Only delete the UserID/Password pair if a UserID exists
+        NSString *storedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:kKeySFHF_StoredUsername];
+        
+        if (storedUsername != nil && ![storedUsername isEqualToString:@""])
+        {
+            NSError *error = nil;
+            [SFHFKeychainUtils deleteItemForUsername:storedUsername andServiceName:kSFHF_ServiceName error:&error];
+            
+            if (error == nil)
+            {
+                NSLog(@"JobletViewController: Success in DELETING keychain data after toggling remember me switch.");
+                [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kKeySFHF_StoredUsername];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+            else
+            {
+                NSLog(@"JobletViewController: Error DELETING keychain data after toggling remember me switch:\n%@", error);
+                [HelperFunction showErrorAlertMsg:kString_FailedToClearCredentials];
+                [self.rememberMeSwitch setOn:YES animated:YES];
+            }
+        }
+    }
+    
+    // Store the current switch state (may have changed due to error)
+    switchStateIsOn = self.rememberMeSwitch.on;
+    [[NSUserDefaults standardUserDefaults] setBool:switchStateIsOn forKey:kKeySFHF_SwitchStateIsOn];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)optionsButtonPressed
@@ -164,6 +203,36 @@
     [self.view addSubview:self.loginButton];
 }	
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // Restore the last switch state
+    self.rememberMeSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:kKeySFHF_SwitchStateIsOn];
+    
+    // Switch is current set to on, load the stored credentials
+    if ([self.rememberMeSwitch isOn])
+    {
+        // Only load the UserID/Password pair if a UserID exists
+        NSString *storedUsername = [[NSUserDefaults standardUserDefaults] objectForKey:kKeySFHF_StoredUsername];
+        
+        if (storedUsername != nil && ![storedUsername isEqualToString:@""])
+        {
+            NSError *error = nil;
+            NSString *storedPassword = [SFHFKeychainUtils getPasswordForUsername:storedUsername andServiceName:kSFHF_ServiceName error:&error];
+            
+            if (error == nil)
+            {
+                NSLog(@"JobletViewController: Success in RETRIEVING keychain data after viewWillAppear.");
+                self.userID.text = storedUsername;
+                self.password.text = storedPassword;
+            }
+            else
+                NSLog(@"JobletViewController: Error RETRIEVING keychain data after viewWillAppear:\n%@", error);
+        }
+    }
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];
@@ -195,6 +264,7 @@
 	self.password = nil;
 	self.loginButton = nil;
 	self.userMessages = nil;
+    self.rememberMeSwitch = nil;
 }
 
 
@@ -203,6 +273,7 @@
 	[password release], password = nil;
 	[loginButton release], loginButton = nil;
 	[userMessages release], userMessages = nil;
+    [rememberMeSwitch release], rememberMeSwitch = nil;
 	[tempUserID release], tempUserID = nil;
 	[tempPassword release], tempPassword = nil;
 	[formRequest release], formRequest = nil;
@@ -570,6 +641,22 @@ static NSString *defaultIndent = nil;
 	}
 	else
 	{
+        // The login was successful, save the UserID/Password if the remember me switch is on
+        if ([self.rememberMeSwitch isOn])
+        {
+            NSError *error = nil;
+            [SFHFKeychainUtils storeUsername:self.tempUserID andPassword:self.tempPassword forServiceName:kSFHF_ServiceName updateExisting:TRUE error:&error];
+            
+            if (error == nil)
+            {
+                NSLog(@"JobletViewController: Success in STORING keychain data after login.");
+                [[NSUserDefaults standardUserDefaults] setObject:self.tempUserID forKey:kKeySFHF_StoredUsername];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+            else
+                NSLog(@"JobletViewController: Error STORING keychain data after login:\n%@", error);
+        }
+
 		[SWLoadingView hide];
 		// load the table view here
 		JobOverviewViewController *nextView = [[JobOverviewViewController alloc] init];

@@ -28,6 +28,7 @@
 #define kString_LastRefreshed						NSLocalizedString(@"Last Refreshed: ", @"Prefix for the last refreshed time")
 #define kString_Login                               NSLocalizedString(@"Login", @"Login button title")
 #define kString_SessionTimedOutPleaseRelogin        NSLocalizedString(@"Your JobMine session has timed out. To refresh, please log out and then log in.", "Error message shown when 19.5 minutes has passed, the JobMine session SHOULD be expiring soon. Stop the user from refreshing (due to a bug where fake-refreshes can happen sometimes)")
+#define kString_FailedToClearCredentials            NSLocalizedString(@"An error occurred while clearing your credentials, please try again later.", @"An unexpected error was encountered when trying to clear the user's credentails")
 
 // Loading Message for SWLoadingView
 #define kString_SW_Loading							NSLocalizedString(@"Loading...", @"Default loading message for the loading popup")
@@ -88,6 +89,8 @@
 #define kKeyOptions_SortCriteriaDidChange			@"kKeyOptions_SortCriteriaDidChange"
 #define kOptions_SortCriteriaKey					@"kOptions_SortCriteriaKey"
 #define kOptions_SortAscending						@"kOptions_SortAscending"
+#define kKeySFHF_StoredUsername                     @"kKeySFHF_StoredUsername"
+#define kKeySFHF_SwitchStateIsOn                    @"kKeySFHF_SwitchStateIsOn"
 
 #pragma mark -
 #pragma mark Options View Indexes/Keys
@@ -106,5 +109,10 @@
 #define kOptionsViewTableCellRowIndex_ShowRankByEmployer		11
 
 #define kNumberOfShowInfoOptions								12
+
+#pragma mark -
+#pragma mark SFHFKeychainUtils Related Constants
+
+#define kSFHF_ServiceName                           @"Login_Joblet"
 
 #pragma mark -
