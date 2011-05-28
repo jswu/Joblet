@@ -42,14 +42,14 @@
 
 - (IBAction)loginButtonPressed:(id)sender
 {
-	self.tempUserID = [[userID.text copy] stringAfterTrim];
+	self.tempUserID = [userID.text stringAfterTrim];
 	if ([self.tempUserID length] == 0)
 	{
 		self.userMessages.text = kString_UserIDRequired;
 		return;
 	}
 
-	self.tempPassword = [[password.text copy] stringAfterTrim];
+	self.tempPassword = [password.text stringAfterTrim];
 	if ([self.tempPassword length] == 0)
 	{
 		self.userMessages.text = kString_PasswordRequired;
