@@ -15,6 +15,7 @@
 		0CC46F6F1380C1DF005A3EE2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CC46F6A1380C1DF005A3EE2 /* Default.png */; };
 		0CC46F701380C1DF005A3EE2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CC46F6B1380C1DF005A3EE2 /* Default@2x.png */; };
 		0CC46FA51380E3E3005A3EE2 /* NetworkOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC46FA41380E3E3005A3EE2 /* NetworkOperations.m */; };
+		0F4366681390D54F003880D1 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4366671390D54F003880D1 /* SFHFKeychainUtils.m */; };
 		0F5EA105131DB64900801CE8 /* UserJobDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EA104131DB64900801CE8 /* UserJobDatabase.m */; };
 		0F5EA1AC131DE36200801CE8 /* NSString+CommonOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EA1AB131DE36200801CE8 /* NSString+CommonOperations.m */; };
 		0F5EA43A131E2A8300801CE8 /* JobOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EA439131E2A8300801CE8 /* JobOverviewViewController.m */; };
@@ -63,6 +64,8 @@
 		0CC46F6B1380C1DF005A3EE2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Assets/Default@2x.png"; sourceTree = "<group>"; };
 		0CC46FA31380E3E3005A3EE2 /* NetworkOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkOperations.h; sourceTree = "<group>"; };
 		0CC46FA41380E3E3005A3EE2 /* NetworkOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkOperations.m; sourceTree = "<group>"; };
+		0F4366661390D54F003880D1 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFHFKeychainUtils.h; path = "scifihifi-iphone/SFHFKeychainUtils.h"; sourceTree = "<group>"; };
+		0F4366671390D54F003880D1 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFHFKeychainUtils.m; path = "scifihifi-iphone/SFHFKeychainUtils.m"; sourceTree = "<group>"; };
 		0F5EA103131DB64900801CE8 /* UserJobDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserJobDatabase.h; sourceTree = "<group>"; };
 		0F5EA104131DB64900801CE8 /* UserJobDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserJobDatabase.m; sourceTree = "<group>"; };
 		0F5EA1AA131DE36200801CE8 /* NSString+CommonOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CommonOperations.h"; sourceTree = "<group>"; };
@@ -200,6 +203,15 @@
 			name = Assets;
 			sourceTree = "<group>";
 		};
+		0F4366651390D505003880D1 /* SFHFKeychainUtils */ = {
+			isa = PBXGroup;
+			children = (
+				0F4366661390D54F003880D1 /* SFHFKeychainUtils.h */,
+				0F4366671390D54F003880D1 /* SFHFKeychainUtils.m */,
+			);
+			name = SFHFKeychainUtils;
+			sourceTree = "<group>";
+		};
 		0F8B86AF12E3DF7B00297951 /* ASIHTTPRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +280,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				0F4366651390D505003880D1 /* SFHFKeychainUtils */,
 				0C2F68B913821BDC00BC163D /* PullToRefresh */,
 				0CC46F661380C1C6005A3EE2 /* Assets */,
 				0F8B86AF12E3DF7B00297951 /* ASIHTTPRequest */,
@@ -409,6 +422,7 @@
 				0CC46FA51380E3E3005A3EE2 /* NetworkOperations.m in Sources */,
 				0C2F68C513821BF800BC163D /* PullRefreshTableViewController.m in Sources */,
 				0F97098D1384A3E3008FDC19 /* AboutViewController.m in Sources */,
+				0F4366681390D54F003880D1 /* SFHFKeychainUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,7 +439,13 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Joblet_Prefix.pch;
+				HEADER_SEARCH_PATHS = (
+					"<Multiple",
+					"values>",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = "Joblet-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = Joblet;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4E219E13-1EE9-4CB7-B0A1-E1B6247EA778";
@@ -439,7 +459,15 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Joblet_Prefix.pch;
+				HEADER_SEARCH_PATHS = (
+					"<Multiple",
+					"values>",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = "Joblet-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				OTHER_LDFLAGS = "-lxml2";
+				"OTHER_LDFLAGS[arch=*]" = "-lxml2";
 				PRODUCT_NAME = Joblet;
 				VALIDATE_PRODUCT = YES;
 			};
