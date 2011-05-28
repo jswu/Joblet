@@ -1,3 +1,9 @@
+Current version and modifications by Sandy Wu
+-Added lastRefreshed NSDate, storing the last refreshed date
+-Added a refreshDateLabel UILabel, showing the last refresh date as a label
+
+Original repo: https://github.com/leah/PullToRefresh
+
 Copyright (c) 2010 Leah Culver
 
 Permission is hereby granted, free of charge, to any person obtaining
