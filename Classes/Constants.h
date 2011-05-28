@@ -9,7 +9,7 @@
 #pragma mark -
 #pragma mark All strings in app shown to user
 
-#define kString_GenericErrorMessage					NSLocalizedString(@"An unexpected error was encounter, please try again later\nError code: %@", @"Generic unknown error message")
+#define kString_GenericErrorMessage					NSLocalizedString(@"An unexpected error was encountered, please try again later\nError code: %@", @"Generic unknown error message")
 #define kString_NoJobDetailsPageFound				NSLocalizedString(@"Job details page not found.", @"Job details page link could not be generated simce job ID was blank")
 #define kString_JobInformation						NSLocalizedString(@"Job Information", @"Job list view heading")
 #define kString_Logout								NSLocalizedString(@"Logout", @"Job list view left bar item") 
