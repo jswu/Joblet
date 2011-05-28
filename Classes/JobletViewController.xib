@@ -141,7 +141,7 @@
 						<string key="NSFrame">{{108, 105}, {192, 31}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="944078765"/>
+						<reference key="NSNextKeyView" ref="910206158"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -190,19 +190,19 @@
 						<int key="IBUINumberOfLines">2</int>
 						<int key="IBUILineBreakMode">0</int>
 					</object>
-					<object class="IBUILabel" id="944078765">
+					<object class="IBUILabel" id="910206158">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 197}, {178, 40}}</string>
+						<string key="NSFrame">{{20, 148}, {178, 40}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="730505703"/>
+						<reference key="NSNextKeyView" ref="591033281"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Remember my UserID and Password</string>
+						<string key="IBUIText">Remember my User ID and Password</string>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica-Bold</string>
 							<double key="NSSize">16</double>
@@ -216,10 +216,10 @@
 						<int key="IBUITextAlignment">1</int>
 						<int key="IBUILineBreakMode">0</int>
 					</object>
-					<object class="IBUISwitch" id="730505703">
+					<object class="IBUISwitch" id="591033281">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{206, 201}, {94, 27}}</string>
+						<string key="NSFrame">{{206, 152}, {94, 27}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -245,7 +245,7 @@
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
-			<object class="IBUISwitch" id="661331179">
+			<object class="IBUISwitch" id="585459448">
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<string key="NSFrameSize">{94, 27}</string>
@@ -323,14 +323,14 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">rememberMeSwitch</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="730505703"/>
+						<reference key="destination" ref="591033281"/>
 					</object>
 					<int key="connectionID">35</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">rememberMeSwitchToggled:</string>
-						<reference key="source" ref="730505703"/>
+						<reference key="source" ref="591033281"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">13</int>
 					</object>
@@ -368,8 +368,8 @@
 							<reference ref="567192857"/>
 							<reference ref="139120750"/>
 							<reference ref="773006341"/>
-							<reference ref="730505703"/>
-							<reference ref="944078765"/>
+							<reference ref="910206158"/>
+							<reference ref="591033281"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -406,17 +406,17 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">31</int>
-						<reference key="object" ref="944078765"/>
+						<reference key="object" ref="910206158"/>
 						<reference key="parent" ref="774585933"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">33</int>
-						<reference key="object" ref="661331179"/>
+						<reference key="object" ref="585459448"/>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">34</int>
-						<reference key="object" ref="730505703"/>
+						<reference key="object" ref="591033281"/>
 						<reference key="parent" ref="774585933"/>
 					</object>
 				</object>

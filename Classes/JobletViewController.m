@@ -187,10 +187,10 @@
 	[aboutButton release];
     
     // The login button
-    NSArray *loginTitle = [[NSArray alloc] initWithObjects:kString_Login    , nil];
+    NSArray *loginTitle = [[NSArray alloc] initWithObjects:kString_Login, nil];
     self.loginButton = [[UISegmentedControl alloc] initWithItems:loginTitle];
     [self.loginButton release];
-    CGRect frame = CGRectMake(115, 151, 87, 35);
+    CGRect frame = CGRectMake(115, 200, 87, 35);
     self.loginButton.frame = frame;
     
     self.loginButton.selectedSegmentIndex = -1;
