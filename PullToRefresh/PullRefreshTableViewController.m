@@ -50,7 +50,8 @@
         textRelease = [[NSString alloc] initWithString:@"Release to refresh..."];
         textLoading = [[NSString alloc] initWithString:@"Loading..."];
 		
-		lastRefreshed = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
+		self.lastRefreshed = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
+        [self.lastRefreshed release];
     }
     return self;
 }
@@ -69,7 +70,8 @@
     refreshLabel.font = [UIFont boldSystemFontOfSize:12.0];
     refreshLabel.textAlignment = UITextAlignmentCenter;
 	
-    refreshDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 320, REFRESH_HEADER_HEIGHT)];
+    self.refreshDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 320, REFRESH_HEADER_HEIGHT)];
+    [self.refreshDateLabel release];
     refreshDateLabel.backgroundColor = [UIColor clearColor];
     refreshDateLabel.font = [UIFont boldSystemFontOfSize:12.0];
     refreshDateLabel.textAlignment = UITextAlignmentCenter;
@@ -77,7 +79,7 @@
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
 	[dateFormatter setDateStyle:NSDateFormatterShortStyle];
-	refreshDateLabel.text = [dateFormatter stringFromDate:lastRefreshed];
+	refreshDateLabel.text = [dateFormatter stringFromDate:self.lastRefreshed];
 	[dateFormatter release];
 	
     refreshArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow.png"]];
@@ -183,6 +185,7 @@
     [textPull release];
     [textRelease release];
     [textLoading release];
+    [lastRefreshed release];
     [super dealloc];
 }
 

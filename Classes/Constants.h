@@ -27,6 +27,7 @@
 #define kString_About								NSLocalizedString(@"About", @"Login screen left bar item, information related to the app")
 #define kString_LastRefreshed						NSLocalizedString(@"Last Refreshed: ", @"Prefix for the last refreshed time")
 #define kString_Login                               NSLocalizedString(@"Login", @"Login button title")
+#define kString_SessionTimedOutPleaseRelogin        NSLocalizedString(@"Your JobMine session has timed out. To refresh, please log out and then log in.", "Error message shown when 19.5 minutes has passed, the JobMine session SHOULD be expiring soon. Stop the user from refreshing (due to a bug where fake-refreshes can happen sometimes)")
 
 // Loading Message for SWLoadingView
 #define kString_SW_Loading							NSLocalizedString(@"Loading...", @"Default loading message for the loading popup")
@@ -72,6 +73,11 @@
 #define kJobMineStrings_NotRanked                   @"Not Ranked"
 #define kJobMineStrings_NotSelected                 @"Not Selected"
 #define kJobMineStrings_ResetTimeoutSuccess         @"Timeout has been reset!"
+
+#pragma mark -
+#pragma mark JobMine Specific Constant Values
+
+#define kJobMineValue_ManualTimeoutTime             1170.0f
 
 #pragma mark -
 #pragma mark User Default Keys

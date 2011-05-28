@@ -65,7 +65,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     [dateFormatter setDateStyle:NSDateFormatterShortStyle];
-    refreshDateLabel.text = [NSString stringWithFormat:@"%@%@", kString_LastRefreshed, [dateFormatter stringFromDate:lastRefreshed]];
+    refreshDateLabel.text = [NSString stringWithFormat:@"%@%@", kString_LastRefreshed, [dateFormatter stringFromDate:self.lastRefreshed]];
     [dateFormatter release];
     
 	if (self.cachedRowData || self.cachedRowInfoStrings == nil)
@@ -372,7 +372,21 @@
 #pragma mark PullRefreshTableViewController Refresh Method
 
 - (void)refresh {
-//    [self performSelector:@selector(addItem) withObject:nil afterDelay:2.0];
+    // There exists a bug where the user can have an expired session with JobMine, but a refresh will appear to succeed. However, any subsequent refreshes will reveal that the session expires.
+    // This is misleading and should not be allowed.
+    // It was also hard to test and determine because JobMine does not always timeout after the 20 minutes (or however long) it says it will. I have seen my session last for hours before expiring.
+    // Until I figure out this issue, this is the workaround:
+    // If the last refresh time is over 19 minutes, then do not let the user continue. Error and tell them to re-login.
+    // TODO: Fix the refresh issue properly (or at least figure out why its happening).
+    
+    // Stops user after 19.5 minutes, to allow for 30 seconds for network request, assuming 20 minute timeout
+    if ([self.lastRefreshed timeIntervalSinceNow] * -1 >= kJobMineValue_ManualTimeoutTime)
+    {
+		[HelperFunction showErrorAlertMsg:kString_SessionTimedOutPleaseRelogin];
+        [self stopLoading];
+        return;
+    }
+    
 	[SWLoadingView show];
 	
 	if (![NetworkOperations hasNetworkConnection])
@@ -393,11 +407,11 @@
 	if ([UserJobDatabase dirtyJobList])
 	{
 		[UserJobDatabase setDirtyJobList:NO];
-		lastRefreshed = [NSDate date];
+		self.lastRefreshed = [NSDate date];
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 		[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
 		[dateFormatter setDateStyle:NSDateFormatterShortStyle];
-		refreshDateLabel.text = [NSString stringWithFormat:@"%@%@", kString_LastRefreshed, [dateFormatter stringFromDate:lastRefreshed]];
+		refreshDateLabel.text = [NSString stringWithFormat:@"%@%@", kString_LastRefreshed, [dateFormatter stringFromDate:self.lastRefreshed]];
 		[dateFormatter release];
 		[self rebuildJobTableCacheWithNewSortedOrder:YES];
 		[self.tableView reloadData];
