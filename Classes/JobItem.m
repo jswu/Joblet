@@ -130,7 +130,11 @@
     // When this method gets called, both the jobStatus and the appStatus should be populated
     // Cancelled jobs should be sorted to the bottom
     if ([jobStatus isEqualToString:kJobMineStrings_Cancelled])
+    {
         code = kAppStatusCode_CancelledJob;
+        // Change the appStatus string to reflect the cancelled state
+        self.appStatus = [NSString stringWithFormat:@"Cancelled (%@)", appStatus];
+    }
     
 	[self setAppStatusCode:[NSNumber numberWithInt:code]];
 }
