@@ -64,6 +64,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.navigationItem.title = kString_About;
+    
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
                                                                                 target:self 
                                                                                 action:@selector(doneButtonPressed)];
