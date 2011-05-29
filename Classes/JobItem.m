@@ -108,6 +108,8 @@
 		code = kAppStatusCode_Offer;
 	else if ([appStatus isEqualToString:kJobMineStrings_Ranked])
 		code = kAppStatusCode_Ranked;
+	else if ([appStatus isEqualToString:@""])
+		code = kAppStatusCode_PotentiallyRankedOrOffer;
 	else if ([appStatus isEqualToString:kJobMineStrings_Scheduled])
 		code = kAppStatusCode_Scheduled;
 	else if ([appStatus isEqualToString:kJobMineStrings_Selected])
@@ -122,9 +124,14 @@
 		code = kAppStatusCode_NotRanked;
 	else if ([appStatus isEqualToString:kJobMineStrings_NotSelected])
 		code = kAppStatusCode_NotSelected;
-	else // This includes blank application statuses
+	else
 		code = kAppStatusCode_Unknown;
 	
+    // When this method gets called, both the jobStatus and the appStatus should be populated
+    // Cancelled jobs should be sorted to the bottom
+    if ([jobStatus isEqualToString:kJobMineStrings_Cancelled])
+        code = kAppStatusCode_CancelledJob;
+    
 	[self setAppStatusCode:[NSNumber numberWithInt:code]];
 }
 @end

@@ -15,17 +15,19 @@
 #define kJobStatus_Filled		1
 #define kJobStatus_Cancelled	2
 
-#define kAppStatusCode_Employed		0
-#define kAppStatusCode_Offer		1 // Not sure if this is valid, but just incase...
-#define kAppStatusCode_Ranked		2 // Not sure if this is valid, but just incase...
-#define kAppStatusCode_Scheduled	3
-#define kAppStatusCode_Selected		4 // TODO: Verify that the string is "Selected"
-#define kAppStatusCode_Alternate	5
-#define kAppStatusCode_Pending		6
-#define kAppStatusCode_Applied		7
-#define kAppStatusCode_NotRanked	8
-#define kAppStatusCode_NotSelected	9
-#define kAppStatusCode_Unknown		10 // For any state that I missed and blank app statuses
+#define kAppStatusCode_Employed                 0
+#define kAppStatusCode_Offer                    1 // Not sure if this is valid, but just incase...
+#define kAppStatusCode_Ranked                   2 // Not sure if this is valid, but just incase...
+#define kAppStatusCode_PotentiallyRankedOrOffer 3 // If a jobItem's app status is blank, then it might be a Ranked or Offer. It has happened to me and some people, but I am not 100% sure that it will only be blank for Ranked/Offers. JobMine Plus (GreaseMonkey script) also does this as of this writing (May 29th, 2011).
+#define kAppStatusCode_Scheduled                4
+#define kAppStatusCode_Selected                 5
+#define kAppStatusCode_Alternate                6
+#define kAppStatusCode_Pending                  7
+#define kAppStatusCode_Applied                  8
+#define kAppStatusCode_NotRanked                9
+#define kAppStatusCode_NotSelected              10
+#define kAppStatusCode_CancelledJob             11 // If a jobItem's job status is "Cancelled", then when we sort by the app status we put it at the bottom regardless of application status
+#define kAppStatusCode_Unknown                  12 // For any state that I missed and blank app statuses
 // Blank states can sometimes mean "offer". One of my offers were blank, but others weren't...not sure why this happens
 
 // Usnure of existance

@@ -66,6 +66,7 @@
 #define kJobMineStrings_Employed                    @"Employed"
 #define kJobMineStrings_Offer                       @"Offer"
 #define kJobMineStrings_Ranked                      @"Ranked"
+#define kJobMineStrings_PotentiallyRankedOrOffer    @"Potentially Ranked or Offer"
 #define kJobMineStrings_Scheduled                   @"Scheduled"
 #define kJobMineStrings_Selected                    @"Selected"
 #define kJobMineStrings_Alternate                   @"Alternate"
@@ -74,6 +75,7 @@
 #define kJobMineStrings_NotRanked                   @"Not Ranked"
 #define kJobMineStrings_NotSelected                 @"Not Selected"
 #define kJobMineStrings_ResetTimeoutSuccess         @"Timeout has been reset!"
+#define kJobMineStrings_Cancelled                   @"Cancelled"
 
 #pragma mark -
 #pragma mark JobMine Specific Constant Values
