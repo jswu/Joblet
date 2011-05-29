@@ -16,6 +16,7 @@
 		0CC46F701380C1DF005A3EE2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CC46F6B1380C1DF005A3EE2 /* Default@2x.png */; };
 		0CC46FA51380E3E3005A3EE2 /* NetworkOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC46FA41380E3E3005A3EE2 /* NetworkOperations.m */; };
 		0F4366681390D54F003880D1 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4366671390D54F003880D1 /* SFHFKeychainUtils.m */; };
+		0F43666A1390F245003880D1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4366691390F245003880D1 /* Security.framework */; };
 		0F5EA105131DB64900801CE8 /* UserJobDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EA104131DB64900801CE8 /* UserJobDatabase.m */; };
 		0F5EA1AC131DE36200801CE8 /* NSString+CommonOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EA1AB131DE36200801CE8 /* NSString+CommonOperations.m */; };
 		0F5EA43A131E2A8300801CE8 /* JobOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EA439131E2A8300801CE8 /* JobOverviewViewController.m */; };
@@ -66,6 +67,7 @@
 		0CC46FA41380E3E3005A3EE2 /* NetworkOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkOperations.m; sourceTree = "<group>"; };
 		0F4366661390D54F003880D1 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFHFKeychainUtils.h; path = "scifihifi-iphone/SFHFKeychainUtils.h"; sourceTree = "<group>"; };
 		0F4366671390D54F003880D1 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFHFKeychainUtils.m; path = "scifihifi-iphone/SFHFKeychainUtils.m"; sourceTree = "<group>"; };
+		0F4366691390F245003880D1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0F5EA103131DB64900801CE8 /* UserJobDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserJobDatabase.h; sourceTree = "<group>"; };
 		0F5EA104131DB64900801CE8 /* UserJobDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserJobDatabase.m; sourceTree = "<group>"; };
 		0F5EA1AA131DE36200801CE8 /* NSString+CommonOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CommonOperations.h"; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F43666A1390F245003880D1 /* Security.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -280,6 +283,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				0F4366691390F245003880D1 /* Security.framework */,
 				0F4366651390D505003880D1 /* SFHFKeychainUtils */,
 				0C2F68B913821BDC00BC163D /* PullToRefresh */,
 				0CC46F661380C1C6005A3EE2 /* Assets */,
@@ -429,6 +433,43 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		0F43666B13920DC6003880D1 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = "Ad Hoc";
+		};
+		0F43666C13920DC6003880D1 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jiayi S. Wu";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Joblet_Prefix.pch;
+				HEADER_SEARCH_PATHS = (
+					"<Multiple",
+					"values>",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
+				INFOPLIST_FILE = "Joblet-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				OTHER_LDFLAGS = "-lxml2";
+				"OTHER_LDFLAGS[arch=*]" = "-lxml2";
+				PRODUCT_NAME = Joblet;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CE095D29-22C0-4F33-B2BC-AC6EA5D922EE";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Ad Hoc";
+		};
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -510,6 +551,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				0F43666C13920DC6003880D1 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -519,6 +561,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				0F43666B13920DC6003880D1 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
