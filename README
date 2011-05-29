@@ -1,3 +1,5 @@
+Disclaimer: This application is not affiliated with the University of Waterloo or JobMine. I am not responsible for any direct or indirect consequences of using the application including, but not limited to, loss of profits, loss job interviews, loss of potential jobs, loss of jobs or compromised account information.
+
 blet is a free iOS app that allows students at the University of Waterloo to access JobMine and check for updates.
 The app provides a nicer user interface to the JobMine system than simply browsing to the website on a mobile browser.
 
@@ -10,7 +12,7 @@ Licensing
 Source code under Classes directory:
 Please refer to the "LICENSE" file for licensing details.
 
-Custom images:
+Custom images under Assets directory:
 All custom images are provide by Zhihao Jia licensed under Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0).
 
 For full licensing details please refer to:
