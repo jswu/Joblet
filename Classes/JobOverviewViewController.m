@@ -279,10 +279,14 @@
 
     cell.textLabel.numberOfLines = 0;
 	/// Job title and employer
+    // Temporary, need logic to differentiate between the job having ranked or offered the user VS ranked or offered for the position.
+    cell.textLabel.text = [NSString stringWithString:job.appStatus];
+/*
 	if (![job.appStatus isEqualToString:@""])
 		cell.textLabel.text = [NSString stringWithString:job.appStatus];
 	else
 		cell.textLabel.text = [NSString stringWithString:kJobMineStrings_PotentiallyRankedOrOffer]; // @"" Denotes a potential Ranked or Offer
+ */
 	cell.textLabel.textAlignment = UITextAlignmentCenter;
 	
 	cell.detailTextLabel.text = [self.cachedRowInfoStrings objectAtIndex:row];
