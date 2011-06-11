@@ -397,7 +397,11 @@
 		[self stopLoading];
 		return;
 	}
-	
+    
+    // When the refresh finishes, change to last refreshed time to the time when the request started
+    // This is especially important for when the user starts a refresh and leaves the app. Upon returning, the lastRefreshed date may be incorrect
+    [self prepareNewLastRefreshDate];
+    
 	NSArray *params = [[NSArray alloc] initWithObjects:NSStringFromSelector(@selector(refreshCallback)), self, nil];
 	[jvc performSelectorInBackground:@selector(fetchApplicationPage:) withObject:params];
 	[params release];
@@ -408,7 +412,7 @@
 	if ([UserJobDatabase dirtyJobList])
 	{
 		[UserJobDatabase setDirtyJobList:NO];
-		self.lastRefreshed = [NSDate date];
+		[self applyNewLastRefreshDate];
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 		[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
 		[dateFormatter setDateStyle:NSDateFormatterShortStyle];

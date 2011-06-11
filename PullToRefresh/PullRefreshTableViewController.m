@@ -35,7 +35,7 @@
 
 @implementation PullRefreshTableViewController
 
-@synthesize textPull, textRelease, textLoading, refreshHeaderView, refreshLabel, refreshDateLabel, lastRefreshed, refreshArrow, refreshSpinner;
+@synthesize textPull, textRelease, textLoading, refreshHeaderView, refreshLabel, refreshDateLabel, lastRefreshed, newLastRefreshedDate, refreshArrow, refreshSpinner;
 
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
@@ -176,6 +176,14 @@
     [self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];
 }
 
+- (void)prepareNewLastRefreshDate {
+    self.newLastRefreshedDate = [NSDate date];
+}
+
+- (void)applyNewLastRefreshDate {
+    self.lastRefreshed = self.newLastRefreshedDate;
+}
+
 - (void)dealloc {
     [refreshHeaderView release];
     [refreshLabel release];
@@ -186,6 +194,7 @@
     [textRelease release];
     [textLoading release];
     [lastRefreshed release];
+    [newLastRefreshedDate release];
     [super dealloc];
 }
 

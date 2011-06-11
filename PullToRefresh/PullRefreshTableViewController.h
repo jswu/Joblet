@@ -35,6 +35,7 @@
     UILabel *refreshLabel;
 	UILabel *refreshDateLabel;
 	NSDate *lastRefreshed;
+    NSDate *newLastRefreshedDate;
     UIImageView *refreshArrow;
     UIActivityIndicatorView *refreshSpinner;
     BOOL isDragging;
@@ -48,6 +49,7 @@
 @property (nonatomic, retain) UILabel *refreshLabel;
 @property (nonatomic, retain) UILabel *refreshDateLabel;
 @property (nonatomic, retain) NSDate *lastRefreshed;
+@property (nonatomic, retain) NSDate *newLastRefreshedDate;
 @property (nonatomic, retain) UIImageView *refreshArrow;
 @property (nonatomic, retain) UIActivityIndicatorView *refreshSpinner;
 @property (nonatomic, copy) NSString *textPull;
@@ -58,5 +60,8 @@
 - (void)startLoading;
 - (void)stopLoading;
 - (void)refresh;
+
+- (void)prepareNewLastRefreshDate;
+- (void)applyNewLastRefreshDate;
 
 @end
