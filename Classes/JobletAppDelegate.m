@@ -27,8 +27,10 @@
 		// Turn on job title and employer by default
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:[NSString stringWithFormat:@"%@_%d", kKeyOptions_ShowInfo, kOptionsViewTableCellRowIndex_ShowJobTitle]];
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:[NSString stringWithFormat:@"%@_%d", kKeyOptions_ShowInfo, kOptionsViewTableCellRowIndex_ShowEmployer]];
+        // Sort by ascending application status by default
 		[[NSUserDefaults standardUserDefaults] setObject:@"appStatusCode" forKey:kOptions_SortCriteriaKey];
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:kOptions_SortAscending];
+        // Ensure the defaults are only set once per version
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:kKeyDefaultOptionsSetForRelease1];
 		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
